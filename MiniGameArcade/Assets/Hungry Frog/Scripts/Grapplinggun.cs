@@ -1,4 +1,5 @@
 using UnityEngine;
+using TMPro;
 
 public class Grapplinggun : MonoBehaviour
 {
@@ -28,6 +29,10 @@ public class Grapplinggun : MonoBehaviour
     [Header("Distance:")]
     [SerializeField] private bool hasMaxDistance = false;
     [SerializeField] private float maxDistnace = 20;
+
+    private int count = 0;
+    private string num;
+    public TMP_Text clicks;
 
     private enum LaunchType
     {
@@ -59,6 +64,9 @@ public class Grapplinggun : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Mouse0))
         {
+            count += 1;
+            num = count.ToString();
+            this.clicks.text = "Clicks: " + num;
             SetGrapplePoint();
         }
         else if (Input.GetKey(KeyCode.Mouse0))
