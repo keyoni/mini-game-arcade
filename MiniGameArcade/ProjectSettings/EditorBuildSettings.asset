@@ -32,4 +32,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Digging Game/Scenes/Demo Scene.unity
     guid: bb31c9c6ebbd7e24e94a714d320679f7
+  - enabled: 1
+    path: Assets/GameMenu1/Scenes/RandomizeTournamentMenu.unity
+    guid: a85a4c8f98d624c449f9934959d25de6
   m_configObjects: {}
