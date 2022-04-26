@@ -10,10 +10,16 @@ namespace Digging_Game.Scripts
         public TextMeshProUGUI currentFuel;
         public TextMeshProUGUI currentScore;
         public TextMeshProUGUI currentDepth;
+
+        public TextMeshProUGUI levelCountdown;
         public ShipController ship;
+        
         
         // Time management
         private float _timeAccumulated;
+        private float _countDownAccumulated;
+        public float timeLeft = 200f;
+
 
         private void Start()
         {
@@ -23,11 +29,25 @@ namespace Digging_Game.Scripts
         private void Update()
         {
             UpdateFuel();
+            UpdateTimer();
             // TODO: Make fuel text flash on low fuel
             currentFuel.color = ship.fuel <= 25 ? Color.red : Color.yellow;
             currentFuel.text = $"Fuel: {ship.fuel} L";
             currentScore.text = $"Score: {ship.score}";
             currentDepth.text = ship.depth > 0 ? $"Depth: -{ship.depth} ft." : $"Depth: {ship.depth} ft.";
+            levelCountdown.text = $"Time Left: {timeLeft:0.00}";
+            
+        }
+
+        private void UpdateTimer()
+        {
+            _countDownAccumulated += Time.deltaTime;
+
+            if (_countDownAccumulated > 0.1f)
+            {
+                timeLeft -= 0.1f;
+                _countDownAccumulated = 0f;
+            }
         }
 
         private void UpdateFuel()
