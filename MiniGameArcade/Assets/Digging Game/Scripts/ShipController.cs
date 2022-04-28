@@ -1,171 +1,195 @@
-using System;
-using System.Security.Cryptography;
-using Unity.VisualScripting;
+using TMPro;
 using UnityEngine;
-using UnityEngine.Assertions;
-using UnityEngine.UIElements;
 
 namespace Digging_Game.Scripts
 {
     public class ShipController : MonoBehaviour
     {
         private Rigidbody2D _rb;
+        
         public float fuel = 100f;
-        public int depth = 0;
-        public float score = 0f;
+        public int depth;
+        public float health = 100f;
+        public float score;
         public float maxFuel = 200f;
         public float speed = 3f;
-        public float upForce = 0.22f;
+        public float flyForce = 0.22f;
+        public float maxVelocity = 8f;
         public float fuelLostPerTick = 2f;
-
         private float _movement;
         
-        private float _keyHeldTime;
-        private float _keyHeldSeconds;
+        private float _mineElapsedTime;
+        private float _mineSeconds;
+        private float _mineDelayElapsed;
+        private float _mineDelayMs;
         
-        private bool _blockRayCollision;
         private int _layerMask;
         private float _yShipBound;
         private float _xShipBound;
         
         private Vector3 _shipPos;
         private Block _block;
+        
+        private RaycastHit2D _blockHit;
+        private bool _mineDown;
 
-        private Vector3 _surfacePos;
+        private bool _facingLeft;
+        private SpriteRenderer _spriteRenderer;
+        
+        public delegate void BlockMined(Block block, Vector3 shipPos);
+        public event BlockMined OnBlockMined;
+
+        // TODO: Can use coroutine instead instead of timer
+        // TODO: Give visual/sound feedback when health is lost
 
         private void Start()
         {
             _rb = GetComponent<Rigidbody2D>();
             _layerMask = LayerMask.GetMask("blocks");
-            _yShipBound = GetComponent<Collider2D>().bounds.extents.y + 0.2f;
+            _yShipBound = GetComponent<Collider2D>().bounds.extents.y + 0.1f;
             _xShipBound = GetComponent<Collider2D>().bounds.extents.x + 0.1f;
-            _surfacePos = FindObjectOfType<FuelStation>().transform.position;
+            _spriteRenderer = GetComponent<SpriteRenderer>();
         }
         
         private void Update()
         {
-            // TODO: Based on ship velocity add hull damage on fall.
-            CalculateDepth();
-            ShipFlying();
-
-            if (!_blockRayCollision)
+            // Raycast to check if ship is not floating before mining
+            if (Physics2D.Raycast(_shipPos, Vector2.down, _yShipBound, _layerMask) && !_blockHit)
             {
-                _movement = Input.GetAxis("Horizontal");
-                transform.position += new Vector3(_movement * speed * Time.deltaTime, 0, 0);
-                _shipPos = transform.position;
+                if (_rb.velocity.magnitude >= maxVelocity)
+                {
+                    // Fall damage
+                    health -= 1.2f * _rb.velocity.magnitude;
+                }
+                
+                if (Input.GetButton("Horizontal"))
+                {
+                    _mineDown = false;
+                    _blockHit = Physics2D.Raycast(_shipPos, new Vector2(_movement, 0f), _xShipBound, _layerMask);
+                }
+                else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+                {
+                    _mineDown = true;
+                    _blockHit = Physics2D.Raycast(_shipPos, Vector2.down, _yShipBound, _layerMask);
+                }
             }
             
-            // New digging mechanic
-            // Ship cannot dig and fly at the same time
-            // TODO: Cannot dig block below if there is half a block above it.
-            if (Input.GetButton("Horizontal") && !ShipFlying())
+            if (_blockHit)
             {
-                var rayDirection = new Vector3(_movement, 0f, 0f);
-                Debug.DrawRay(_shipPos, rayDirection, Color.black);
-                RaycastHit2D hit = Physics2D.Raycast(_shipPos, rayDirection, _xShipBound, _layerMask);
-                MineBlock(_shipPos, false, hit);
-            }
-            else if (Input.GetKey(KeyCode.S) && !ShipFlying() && !Input.GetButton("Horizontal"))
-            {
-                var hit = Physics2D.Raycast(_shipPos, Vector2.down, _yShipBound, _layerMask);
-                MineBlock(_shipPos, true, hit);
-            }
-        }
-
-        private void CalculateDepth()
-        {
-            if (_shipPos.y < _surfacePos.y)
-            {
-                var difference = _surfacePos.y - transform.position.y;
-                depth = (int) (difference * 12f);
-            } else if (_shipPos.y >= _surfacePos.y)
-            {
-                depth = 0;
-            }
-        }
-
-        private bool ShipFlying()
-        {
-            if (Input.GetButton("Jump"))
-            {
-                _blockRayCollision = false;
-                _rb.AddForce(new Vector2(0f, upForce), ForceMode2D.Impulse);
-                return true;
+                MineBlock(_mineDown, _blockHit);
             }
             else
             {
-                return false;
+                _movement = Input.GetAxis("Horizontal");
+                transform.position += new Vector3(_movement, 0, 0) * (speed * Time.deltaTime);
+                _shipPos = transform.position;
+                UpdateShipDirection();
             }
         }
 
-        private void KeyHeldTimer()
+        private void FixedUpdate()
         {
-            _keyHeldTime += Time.deltaTime;
+            if (Input.GetButton("Jump"))
+            {
+                _rb.AddForce(new Vector2(0f, flyForce), ForceMode2D.Impulse);
+            }
+
+            if (_rb.velocity.y > maxVelocity)
+            {
+                // Clamp the max velocity (useful for not moving too fast)
+                _rb.velocity = Vector2.ClampMagnitude(_rb.velocity, maxVelocity);
+            }
+        }
+
+        // Update the direction of ship's sprite
+        private void UpdateShipDirection()
+        {
+            if (_movement > 0 && _facingLeft)
+            {
+                _facingLeft = false;
+                _spriteRenderer.flipX = true;
+            } else if (_movement < 0 && !_facingLeft)
+            {
+                _facingLeft = true;
+                _spriteRenderer.flipX = false;
+            }
+        }
+
+        private void StartMiningTimer()
+        {
+            _mineElapsedTime += Time.deltaTime;
                 
-            if (_keyHeldTime > 0.01f)
+            if (_mineElapsedTime > 0.01f)
             {
-                _keyHeldSeconds += 0.01f;
-                _keyHeldTime = 0f;
+                _mineSeconds += 0.01f;
+                _mineElapsedTime = 0f;
             }
         }
 
-        private void ResetKeyTimer()
+        private void ResetMiningTimer()
         {
-            _keyHeldTime = 0f;
-            _keyHeldSeconds = 0f;
+            _mineElapsedTime = 0f;
+            _mineSeconds = 0f;
         }
 
-        private void MineBlock(Vector3 playerPos, bool mineDown, RaycastHit2D hit)
+        private void MineBlock(bool mineDown, RaycastHit2D hit)
         {
-            // TODO: Remove duplicate code.
-            _blockRayCollision = false;
-            if (mineDown)
+            var hitScale = hit.transform.localScale;
+            var hitPos = hit.transform.position;
+
+            if (hit && mineDown) // Vertical mining
             {
-                Debug.DrawRay(playerPos, Vector3.down, Color.black);
-                if (hit)
+                if (hit.collider.CompareTag("obstacle"))
                 {
-                    _blockRayCollision = true;
-                    _block = hit.transform.gameObject.GetComponent<Block>();
-                    KeyHeldTimer();
-                    if (_keyHeldSeconds >= _block.timeToMineBlock)
-                    {
-                        var hitScale = hit.transform.localScale;
-                        var hitPos = hit.transform.position;
-                        hit.transform.position = new Vector3(hitPos.x, hitPos.y - 0.05f, hitPos.z);
-                        hit.transform.localScale = new Vector3(hitScale.x, hitScale.y - 0.1f, hitScale.z);
-                        transform.position = new Vector3(hitPos.x, _shipPos.y - 0.1f, _shipPos.z);
-                        ResetKeyTimer();
-                        
-                        if (_block.transform.localScale.y <= 0.1f)
-                        {
-                            score += _block.value;
-                            Destroy(_block.transform.gameObject);
-                        }
-                    }
+                    _blockHit = new RaycastHit2D();
+                    return;
                 }
-                return;
-            }
-
-            if (hit)
-            {
-                _blockRayCollision = true;
+                
+                StartMiningTimer();
                 _block = hit.transform.gameObject.GetComponent<Block>();
-                KeyHeldTimer();
-                if (_keyHeldSeconds >= _block.timeToMineBlock)
+                if (_mineSeconds >= _block.timeToMineBlock)
                 {
-                    var hitScale = hit.transform.localScale;
-                    var hitPos = hit.transform.position;
-                    hit.transform.position = new Vector3(hitPos.x + (0.05f * _movement), hitPos.y, hitPos.z);
+                    hit.transform.position = new Vector3(hitPos.x, hitPos.y - 0.075f, hitPos.z);
+                    hit.transform.localScale = new Vector3(hitScale.x, hitScale.y - 0.1f, hitScale.z);
+                    transform.position = new Vector3(hitPos.x, hit.collider.bounds.max.y + 0.3f, _shipPos.z);
+                    ResetMiningTimer();
+                    ProcessMinedBlock();
+                }
+            } 
+            else // Horizontal mining
+            {
+                StartMiningTimer();
+                _block = hit.transform.gameObject.GetComponent<Block>();
+                if (_mineSeconds >= _block.timeToMineBlock)
+                {
+                    // TODO: Block should move in opposite position from where it's being mined
+                    hit.transform.position = new Vector3(hitPos.x + (0.015f * _movement), hitPos.y, hitPos.z);
                     hit.transform.localScale = new Vector3(hitScale.x - 0.1f, hitScale.y, hitScale.z);
-                    transform.position = new Vector3(_shipPos.x + (0.05f * _movement), _shipPos.y, _shipPos.z);
-                    ResetKeyTimer();
-                        
-                    if (_block.transform.localScale.x <= 0.1f)
+                    ResetMiningTimer();
+                    ProcessMinedBlock();
+
+                    // If movement -1 (left) get bounds.extents.max.x
+                    // Else movement 1 (right) get bounds.extents.min.x
+                    if (_movement < 0)
                     {
-                        score += _block.value;
-                        Destroy(_block.transform.gameObject);
+                        transform.position = new Vector3(hit.collider.bounds.max.x + 0.40f, _shipPos.y, _shipPos.z);
+                    }
+                    else
+                    {
+                        transform.position = new Vector3(hit.collider.bounds.min.x - 0.40f, _shipPos.y, _shipPos.z);
                     }
                 }
+            }
+        }
+        
+        private void ProcessMinedBlock()
+        {
+            if (_block.transform.localScale.y <= 0.1f || _block.transform.localScale.x <= 0.1f)
+            {
+                score += _block.value;
+                _blockHit = new RaycastHit2D();
+                OnBlockMined?.Invoke(_block, _shipPos);
+                Destroy(_block.transform.gameObject);
             }
         }
     }

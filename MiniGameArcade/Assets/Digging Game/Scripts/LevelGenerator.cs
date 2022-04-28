@@ -8,16 +8,21 @@ namespace Digging_Game.Scripts
 {
     public class LevelGenerator : MonoBehaviour
     {
+        public GameObject airPrefab;
         public GameObject dirtPrefab;
         public GameObject stonePrefab;
-        public GameObject orePrefab;
+        public GameObject copperPrefab;
+        public GameObject ironPrefab;
+        public GameObject goldPrefab;
+        public GameObject diamondPrefab;
+        public GameObject obsidianPrefab;
         
         public Transform levelRoot;
 
         public int levelHeight = 10;
         public int levelWidth = 20;
 
-        public float scale = 25f;
+        public float baseScale = 25f;
         void Start()
         {
             GenerateLevel();
@@ -25,22 +30,11 @@ namespace Digging_Game.Scripts
 
         void GenerateLevel()
         {
-            // TODO: Add different ores.
-            // TODO: Make frequency of ores higher the the more ft you dig.
-            // TODO: Spawn certain ores past certain depth.
             for (int row = 0; row < levelHeight; row++)
             {
                 for (int column = 0; column < levelWidth; column++)
                 {
-                    if (row == levelHeight - 1)
-                    {
-                        var block = Instantiate(dirtPrefab, levelRoot);
-                        block.transform.position = new Vector3(column + 0.5f, row + 0.5f, 0f);
-                    }
-                    else
-                    {
-                        CreateBlock(row, column);
-                    }
+                    CreateBlock(row, column);
                 }
             }
         }
@@ -48,29 +42,58 @@ namespace Digging_Game.Scripts
         void CreateBlock(int row, int column)
         {
             // Different scale every time game loads
-            float randomScale = Random.Range(scale + 10f, scale + 9000f);
+            float randomScale = Random.Range(baseScale + 10f, baseScale + 9000f);
             
             float r = (float) row / levelHeight * randomScale;
             float h = (float) column / levelWidth * randomScale;
             
             float perlinOutput = Mathf.PerlinNoise(r, h);
             Vector3 blockOffsetPos = new Vector3(column + 0.5f, row + 0.5f, 0f);
-            
-            if (perlinOutput < 0.20f)
+
+            GameObject blockToCreate;
+
+            if (row == levelHeight - 1)
             {
-                var block = Instantiate(orePrefab, levelRoot);
-                block.transform.position = blockOffsetPos;
-            } 
-            else if (perlinOutput < 0.35f)
+                blockToCreate = dirtPrefab;
+            }
+            else if (row > 0)
             {
-                var block = Instantiate(stonePrefab, levelRoot);
-                block.transform.position = blockOffsetPos;
+                if (perlinOutput < 0.07f && row < levelHeight / 3)
+                {
+                    blockToCreate = diamondPrefab;
+                }
+                else if (perlinOutput < 0.10f && row < levelHeight / 2)
+                {
+                    blockToCreate = goldPrefab;
+                }
+                else if (perlinOutput < 0.15f && row < levelHeight - 10)
+                {
+                    blockToCreate = ironPrefab;
+                }
+                else if (perlinOutput < 0.20f)
+                {
+                    blockToCreate = copperPrefab;
+                }
+                else if (perlinOutput < 0.25f && row < levelHeight - 2)
+                {
+                    blockToCreate = airPrefab;
+                }
+                else if (perlinOutput < 0.35f)
+                {
+                    blockToCreate = stonePrefab;
+                }
+                else
+                {
+                    blockToCreate = dirtPrefab;
+                }
             }
             else
             {
-                var block = Instantiate(dirtPrefab, levelRoot);
-                block.transform.position = blockOffsetPos;
+                // Spawn obsidian at very bottom of level
+                blockToCreate = obsidianPrefab;
             }
+            
+            Instantiate(blockToCreate, blockOffsetPos, Quaternion.identity, levelRoot);
         }
     }
 }
