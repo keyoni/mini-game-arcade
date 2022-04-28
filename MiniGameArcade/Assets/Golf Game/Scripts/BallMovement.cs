@@ -19,7 +19,7 @@ public class BallMovement : MonoBehaviour
             if (arrowActive) {
                 Arrow.SetActive(false);
                 arrowActive = false;
-            } else if (rb.velocity.x <= 0.001f && rb.velocity.y <= 0.001f) {
+            } else if (rb.velocity.x == 0f && rb.velocity.y == 0f) {
                 Arrow.SetActive(true);
                 arrowActive = true;
             }

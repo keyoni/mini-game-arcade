@@ -6,6 +6,10 @@ TagManager:
   tags:
   - Flag
   - obstacle
+  - Floor
+  - Boundary
+  - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX
