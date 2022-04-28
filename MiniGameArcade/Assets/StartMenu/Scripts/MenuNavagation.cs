@@ -11,7 +11,9 @@ public class MenuNavagation : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        DontDestroyOnLoad(this);
+    //     if(false){
+    //         DontDestroyOnLoad(this);
+    //     }
     }
 
     // Update is called once per frame
@@ -22,8 +24,16 @@ public class MenuNavagation : MonoBehaviour
 
     public void SceneChange(String sceneName)
     {
-        SceneManager.LoadScene(sceneName);
+        StartCoroutine(Wait(sceneName));
+        // SceneManager.LoadScene(sceneName);
     }
 
+    IEnumerator Wait(String sceneName)
+    {
+        
+        yield return new WaitForSeconds(0.5f);
+        
+        SceneManager.LoadScene(sceneName);
+    }
 }
 
