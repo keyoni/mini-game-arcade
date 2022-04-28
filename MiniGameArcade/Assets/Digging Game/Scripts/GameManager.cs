@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 
@@ -7,49 +6,68 @@ namespace Digging_Game.Scripts
     public class GameManager : MonoBehaviour
     {
         public float gameTick = 2f;
-        public TextMeshProUGUI currentFuel;
-        public TextMeshProUGUI currentScore;
-        public TextMeshProUGUI currentDepth;
-
-        public TextMeshProUGUI levelCountdown;
         public ShipController ship;
-        
+        private Vector3 _surfacePos;
         
         // Time management
         private float _timeAccumulated;
         private float _countDownAccumulated;
         public float timeLeft = 200f;
+        
+        public delegate void UpdateUI(ShipController ship, float timeLeft);
+        public event UpdateUI OnUIUpdate;
 
-
+        public delegate void GameOver(Vector3 shipPos);
+        public event GameOver OnGameOver;
+        
         private void Start()
         {
             ship = FindObjectOfType<ShipController>();
+            _surfacePos = FindObjectOfType<FuelStation>().transform.position;
         }
 
         private void Update()
         {
-            UpdateFuel();
-            UpdateTimer();
-            // TODO: Make fuel text flash on low fuel
-            currentFuel.color = ship.fuel <= 25 ? Color.red : Color.yellow;
-            currentFuel.text = $"Fuel: {ship.fuel} L";
-            currentScore.text = $"Score: {ship.score}";
-            currentDepth.text = ship.depth > 0 ? $"Depth: -{ship.depth} ft." : $"Depth: {ship.depth} ft.";
-            levelCountdown.text = $"Time Left: {timeLeft:0.00}";
-            
+            if (ship.health <= 0 || timeLeft <= 0)
+            {
+                OnGameOver?.Invoke(ship.transform.position);
+            }
+            else
+            {
+                OnUIUpdate?.Invoke(ship, timeLeft);
+                UpdateShipDepth();
+                UpdateFuel();
+                UpdateTimer();
+            }
         }
 
+        // Update distance of ship from the surface
+        private void UpdateShipDepth()
+        {
+            var shipPos = ship.transform.position;
+            if (shipPos.y < _surfacePos.y)
+            {
+                var difference = _surfacePos.y - shipPos.y;
+                ship.depth = (int) (difference * 12f);
+            } else if (shipPos.y >= _surfacePos.y)
+            {
+                ship.depth = 0;
+            }
+        }
+
+        // Update level countdown
         private void UpdateTimer()
         {
             _countDownAccumulated += Time.deltaTime;
 
-            if (_countDownAccumulated > 0.1f)
+            if (_countDownAccumulated > 0.01f)
             {
-                timeLeft -= 0.1f;
+                timeLeft -= 0.01f;
                 _countDownAccumulated = 0f;
             }
         }
 
+        // Update fuel counter
         private void UpdateFuel()
         {
             _timeAccumulated += Time.deltaTime;
@@ -65,7 +83,6 @@ namespace Digging_Game.Scripts
                 {
                     ship.fuel = 0;
                 }
-                
             }
         }
     }
