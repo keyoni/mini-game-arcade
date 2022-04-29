@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Motherload
   m_EditorClassIdentifier: 
   gameIndex: 3
-  gameTitle: Motherload
+  gameTitle: Dig  Down!
   gameInfo: Dig Dig Dig!
   gameImage: {fileID: 21300000, guid: c3db95c19818f544490129fad5de01a1, type: 3}
   leaderboardSceneName: 
-  gameLevelOneSceneName: Demo Scene
+  gameLevelOneSceneName: DigMainMenu
   backgroundMusic: {fileID: 8300000, guid: 25cbfb801956b9c45a63b08ff9c463dc, type: 3}

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameIndex: 0
   gameTitle: Golf
-  gameInfo: Least amount of stokes give you the most points!
+  gameInfo: Use the power meter to hit the ball!
   gameImage: {fileID: 21300000, guid: 354d000ca7b17414e84555e8d17d1944, type: 3}
   leaderboardSceneName: 
-  gameLevelOneSceneName: Golf demo
+  gameLevelOneSceneName: GolfMainMenu
   backgroundMusic: {fileID: 8300000, guid: d5792d5273513444ca069fbe1052ff29, type: 3}
