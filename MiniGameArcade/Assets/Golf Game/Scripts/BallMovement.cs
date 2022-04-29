@@ -21,6 +21,10 @@ public class BallMovement : MonoBehaviour
     }
 
     void Update() {
+        if (rb.velocity.magnitude < 0.025f) {
+            rb.velocity = new Vector3(0, 0, 0);
+        }
+
         if (Input.GetKeyDown(KeyCode.Space)) {
             // if (arrowActive && !meterActive) {
             //     Arrow.SetActive(false);
@@ -71,6 +75,8 @@ public class BallMovement : MonoBehaviour
             //Debug.Log(slide.value);
 
             if (Input.GetMouseButtonDown(1)) {
+                FindObjectOfType<GolfAudio>().playSound("swing");
+                
                 float powerMult = slide.value;
                 rb.AddForce(dir*HitForce*powerMult, ForceMode2D.Impulse);
                 arrowActive = false;
@@ -84,6 +90,7 @@ public class BallMovement : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D col) {
         if (col.gameObject.CompareTag("Flag")) {
+            FindObjectOfType<GolfAudio>().playSound("ball-in-hole");
             Debug.Log("Goal!");
             FindObjectOfType<Scoring>().completeRound();
         }
