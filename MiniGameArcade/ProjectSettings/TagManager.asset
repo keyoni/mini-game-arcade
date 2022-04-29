@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Flag
+  - obstacle
+  - Floor
+  - Boundary
+  - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -51,6 +56,21 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+
   - name: Top
     uniqueID: 3109808417
+  - name: Background
+    uniqueID: 2224072621
+    locked: 0
+  - name: Fuel
+    uniqueID: 2546884301
+    locked: 0
+  - name: Foreground
+    uniqueID: 1377425455
+    locked: 0
+  - name: Ship
+    uniqueID: 1118050015
+    locked: 0
+  - name: Canvas
+    uniqueID: 2571355267
     locked: 0
