@@ -46,6 +46,7 @@ public class LeaderboardSender: MonoBehaviour
         score = Int32.Parse(currentScore.text);
         if (CheckIfHighScore())
         {
+            print(highScoreRank);
             //Do high score stuff
         };
         
@@ -81,11 +82,21 @@ public class LeaderboardSender: MonoBehaviour
         switch (highScoreRank)
         {
           case 1:
-              //shift scores
+              //shift scores 2->3
+              PlayerPrefs.SetString(playerPrefsBase + "[3].name", PlayerPrefs.GetString(playerPrefsBase + "[2].name"));
+              PlayerPrefs.SetInt(playerPrefsBase + "[3].score", PlayerPrefs.GetInt(playerPrefsBase + "[2].score"));
+              //shift scores 1->2
+              PlayerPrefs.SetString(playerPrefsBase + "[2].name", PlayerPrefs.GetString(playerPrefsBase + "[1].name"));
+              PlayerPrefs.SetInt(playerPrefsBase + "[2].score", PlayerPrefs.GetInt(playerPrefsBase + "[1].score"));
+              
               PlayerPrefs.SetString(playerPrefsBase + "[1].name", nameInput.text);
               PlayerPrefs.SetInt(playerPrefsBase + "[1].score", score);
               break;
           case 2:
+              //shift scores 2->3
+              PlayerPrefs.SetString(playerPrefsBase + "[3].name", PlayerPrefs.GetString(playerPrefsBase + "[2].name"));
+              PlayerPrefs.SetInt(playerPrefsBase + "[3].score", PlayerPrefs.GetInt(playerPrefsBase + "[2].score"));
+              
               PlayerPrefs.SetString(playerPrefsBase + "[2].name", nameInput.text);
               PlayerPrefs.SetInt(playerPrefsBase + "[2].score", score);
               break;

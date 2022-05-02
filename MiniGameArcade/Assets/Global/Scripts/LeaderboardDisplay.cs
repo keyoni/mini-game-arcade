@@ -32,8 +32,8 @@ public class LeaderboardDisplay : MonoBehaviour
         firstScore.text = PlayerPrefs.GetInt(lb.playerPrefsBase + "[1].score").ToString();
         secondName.text = PlayerPrefs.GetString(lb.playerPrefsBase + "[2].name"); 
         secondScore.text = PlayerPrefs.GetInt(lb.playerPrefsBase + "[2].score").ToString();
-        thirdName.text = PlayerPrefs.GetString(lb.playerPrefsBase + "[2].name");
-        thirdScore.text = PlayerPrefs.GetInt(lb.playerPrefsBase + "[2].score").ToString();
+        thirdName.text = PlayerPrefs.GetString(lb.playerPrefsBase + "[3].name");
+        thirdScore.text = PlayerPrefs.GetInt(lb.playerPrefsBase + "[3].score").ToString();
         
     }
 }
