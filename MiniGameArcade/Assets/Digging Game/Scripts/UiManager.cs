@@ -86,7 +86,7 @@ namespace Digging_Game.Scripts
 
         private void OnRefuel(Vector3 fuelStationPos, Transform fuelTransform, int refuelAmount)
         {
-            var fuelTextObj = Instantiate(textObj, fuelStationPos, Quaternion.identity, fuelTransform);
+            var fuelTextObj = Instantiate(textObj, fuelStationPos, Quaternion.identity, fuelTransform.GetChild(0).transform);
             var fuelText = fuelTextObj.GetComponentInChildren<TextMeshProUGUI>();
             fuelTextObj.transform.position = new Vector2(fuelStationPos.x + 3.5f, fuelStationPos.y + 1.5f);
             fuelText.text = $"+{refuelAmount}L";

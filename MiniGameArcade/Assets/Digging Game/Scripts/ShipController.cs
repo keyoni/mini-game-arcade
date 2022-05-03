@@ -6,7 +6,11 @@ namespace Digging_Game.Scripts
     public class ShipController : MonoBehaviour
     {
         private Rigidbody2D _rb;
-        
+        public Animator animator;
+        private static readonly int IsFlying = Animator.StringToHash("IsFlying");
+        private static readonly int IsDigDown = Animator.StringToHash("IsDigDown");
+
+
         public float fuel = 100f;
         public int depth;
         public float health = 100f;
@@ -35,7 +39,7 @@ namespace Digging_Game.Scripts
 
         private bool _facingLeft;
         private SpriteRenderer _spriteRenderer;
-        
+
         public delegate void BlockMined(Block block, Vector3 shipPos);
         public event BlockMined OnBlockMined;
 
@@ -56,6 +60,7 @@ namespace Digging_Game.Scripts
             // Raycast to check if ship is not floating before mining
             if (Physics2D.Raycast(_shipPos, Vector2.down, _yShipBound, _layerMask) && !_blockHit)
             {
+                animator.SetBool(IsFlying, false); // On ground so not flying.
                 if (_rb.velocity.magnitude >= maxVelocity)
                 {
                     // Fall damage
@@ -70,8 +75,13 @@ namespace Digging_Game.Scripts
                 else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
                 {
                     _mineDown = true;
+                    animator.SetBool(IsDigDown, true);
                     _blockHit = Physics2D.Raycast(_shipPos, Vector2.down, _yShipBound, _layerMask);
                 }
+            }
+            else
+            {
+                animator.SetBool(IsFlying, true);
             }
             
             if (_blockHit)
@@ -80,6 +90,10 @@ namespace Digging_Game.Scripts
             }
             else
             {
+                if (!Input.GetKey(KeyCode.S) && !Input.GetKey(KeyCode.DownArrow))
+                {
+                    animator.SetBool(IsDigDown, false);
+                }
                 _movement = Input.GetAxis("Horizontal");
                 transform.position += new Vector3(_movement, 0, 0) * (speed * Time.deltaTime);
                 _shipPos = transform.position;
@@ -89,7 +103,7 @@ namespace Digging_Game.Scripts
 
         private void FixedUpdate()
         {
-            if (Input.GetButton("Jump"))
+            if (Input.GetButton("Jump") || Input.GetKey(KeyCode.UpArrow))
             {
                 _rb.AddForce(new Vector2(0f, flyForce), ForceMode2D.Impulse);
             }
@@ -134,6 +148,8 @@ namespace Digging_Game.Scripts
 
         private void MineBlock(bool mineDown, RaycastHit2D hit)
         {
+            animator.SetBool(IsFlying, false);
+
             var hitScale = hit.transform.localScale;
             var hitPos = hit.transform.position;
 
