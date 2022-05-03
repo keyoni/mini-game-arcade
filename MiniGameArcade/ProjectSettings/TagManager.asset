@@ -10,6 +10,8 @@ TagManager:
   - Boundary
   - Enemy
   - Bullet
+  - Pos
+  - Neg
   layers:
   - Default
   - TransparentFX
