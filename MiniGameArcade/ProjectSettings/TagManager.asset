@@ -5,6 +5,11 @@ TagManager:
   serializedVersion: 2
   tags:
   - Flag
+  - obstacle
+  - Floor
+  - Boundary
+  - Enemy
+  - Bullet
   layers:
   - Default
   - TransparentFX
@@ -39,6 +44,32 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Background
+    uniqueID: 924669015
+    locked: 0
+  - name: Background Top
+    uniqueID: 3244780547
+    locked: 0
+  - name: Bottom
+    uniqueID: 715076015
+    locked: 0
+  - name: Under terrain
+    uniqueID: 3491963223
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ball
+    uniqueID: 53889785
+    locked: 0
+  - name: Clouds
+    uniqueID: 251602823
+    locked: 0
+  - name: Arrow
+    uniqueID: 991620799
+  - name: Ship
+    uniqueID: 866200821
+    locked: 0
+  - name: UserInterface
+    uniqueID: 2971202733
     locked: 0
