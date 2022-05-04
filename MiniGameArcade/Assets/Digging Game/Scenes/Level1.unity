@@ -469,6 +469,7 @@ GameObject:
   - component: {fileID: 553725539}
   - component: {fileID: 553725538}
   - component: {fileID: 553725542}
+  - component: {fileID: 553725543}
   m_Layer: 2
   m_Name: Ship
   m_TagString: Untagged
@@ -603,7 +604,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9cfba0751ade92408562ce78e771b11, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 553725543}
   fuel: 100
   depth: 0
   health: 100
@@ -613,6 +614,26 @@ MonoBehaviour:
   flyForce: 0.22
   maxVelocity: 10
   fuelLostPerTick: 2
+--- !u!95 &553725543
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 553725537}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ceff00ffc1202b9429a9351fa7a1f376, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &657313102
 GameObject:
   m_ObjectHideFlags: 0
