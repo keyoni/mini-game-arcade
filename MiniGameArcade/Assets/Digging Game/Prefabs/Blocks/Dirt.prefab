@@ -147,7 +147,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06da83547f69d5743988c4cd41340dea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToMineBlock: 0.025
+  timeToMineBlock: 0.03
   value: 25
   blockName: Dirt
 --- !u!1 &8300961999065579394

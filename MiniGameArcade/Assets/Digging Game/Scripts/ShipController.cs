@@ -9,7 +9,7 @@ namespace Digging_Game.Scripts
         public Animator animator;
         private static readonly int IsFlying = Animator.StringToHash("IsFlying");
         private static readonly int IsDigDown = Animator.StringToHash("IsDigDown");
-
+        private static readonly int IsDigHorizontal = Animator.StringToHash("IsDigHorizontal");
 
         public float fuel = 100f;
         public int depth;
@@ -69,6 +69,7 @@ namespace Digging_Game.Scripts
                 
                 if (Input.GetButton("Horizontal"))
                 {
+                    animator.SetBool(IsDigHorizontal, true);
                     _mineDown = false;
                     _blockHit = Physics2D.Raycast(_shipPos, new Vector2(_movement, 0f), _xShipBound, _layerMask);
                 }
@@ -94,6 +95,7 @@ namespace Digging_Game.Scripts
                 {
                     animator.SetBool(IsDigDown, false);
                 }
+                animator.SetBool(IsDigHorizontal, false);
                 _movement = Input.GetAxis("Horizontal");
                 transform.position += new Vector3(_movement, 0, 0) * (speed * Time.deltaTime);
                 _shipPos = transform.position;
