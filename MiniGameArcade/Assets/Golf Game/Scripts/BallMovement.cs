@@ -25,7 +25,7 @@ public class BallMovement : MonoBehaviour
             rb.velocity = new Vector3(0, 0, 0);
         }
 
-        if (Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space) && rb.velocity.magnitude == 0f) {
             // if (arrowActive && !meterActive) {
             //     Arrow.SetActive(false);
             //     arrowActive = false;

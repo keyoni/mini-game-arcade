@@ -64,6 +64,9 @@ TagManager:
   - name: Ball
     uniqueID: 53889785
     locked: 0
+  - name: Hole terrain
+    uniqueID: 2128203205
+    locked: 0
   - name: Clouds
     uniqueID: 251602823
     locked: 0
