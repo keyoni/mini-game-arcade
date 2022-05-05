@@ -25,6 +25,7 @@ namespace Digging_Game.Scripts
         public TextMeshProUGUI score;
         public TextMeshProUGUI fuel;
         public TextMeshProUGUI health;
+        public TextMeshProUGUI hiddenScore;
         
         private void Start()
         {
@@ -43,6 +44,8 @@ namespace Digging_Game.Scripts
         {
             var pos = new Vector3(shipPos.x, shipPos.y + 1.5f, shipPos.z);
             var text = Instantiate(gameOverObj, pos, Quaternion.identity, _ship.transform);
+            //hiddenScore.text = score.text;
+            FindObjectOfType<LeaderboardSender>().GetFinalScore();
             _gm.OnGameOver -= GameOver;
         }
         
@@ -53,6 +56,7 @@ namespace Digging_Game.Scripts
             fuel.text = $"Fuel: {ship.fuel} L";
             
             score.text = $"Score: {ship.score}";
+            hiddenScore.text = ship.score.ToString();
             depth.text = ship.depth > 0 ? $"Depth: -{ship.depth} ft." : $"Depth: {ship.depth} ft.";
             
             levelCountdown.text = $"Time Left: {timeLeft:0.00}";

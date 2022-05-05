@@ -14,7 +14,7 @@ public class DisplayGame : MonoBehaviour
     [SerializeField] private AudioClip backgroundMusic;
     [SerializeField] private Button playBtn;
     [SerializeField] private AudioSource audioSource;
-
+    [SerializeField] private Button leaderBtn;
     [SerializeField] private MenuNavagation menuNav;
     private void Start()
     {
@@ -29,7 +29,9 @@ public class DisplayGame : MonoBehaviour
         backgroundMusic = game.backgroundMusic;
         playMusic();
         playBtn.onClick.RemoveAllListeners();
-        playBtn.onClick.AddListener(() =>menuNav.SceneChange(game.gameLevelOneSceneName));
+        playBtn.onClick.AddListener(() =>menuNav.SceneChange(game.leaderboardSceneName));
+        leaderBtn.onClick.RemoveAllListeners();
+        leaderBtn.onClick.AddListener(() =>menuNav.SceneChange(game.leaderboardSceneName));
     }
 
     public void playMusic()
