@@ -20,7 +20,7 @@ namespace Digging_Game.Scripts
         public float flyForce = 0.22f;
         public float maxVelocity = 8f;
         public float fuelLostPerTick = 2f;
-        private float _movement;
+        public float movement;
         
         private float _mineElapsedTime;
         private float _mineSeconds;
@@ -35,7 +35,7 @@ namespace Digging_Game.Scripts
         private Block _block;
         
         private RaycastHit2D _blockHit;
-        private bool _mineDown;
+        public bool mineDown;
 
         private bool _facingLeft;
         private SpriteRenderer _spriteRenderer;
@@ -45,6 +45,10 @@ namespace Digging_Game.Scripts
 
         // TODO: Can use coroutine instead instead of timer
         // TODO: Give visual/sound feedback when health is lost
+        private bool _playIdle;
+        private bool _playMining;
+
+        public bool shipGrounded;
 
         private void Start()
         {
@@ -57,9 +61,16 @@ namespace Digging_Game.Scripts
         
         private void Update()
         {
+            if (!_playIdle)
+            {
+                AudioManager.PlaySound("shipIdle");
+                _playIdle = true;
+            }
+            
             // Raycast to check if ship is not floating before mining
             if (Physics2D.Raycast(_shipPos, Vector2.down, _yShipBound, _layerMask) && !_blockHit)
             {
+                shipGrounded = true;
                 animator.SetBool(IsFlying, false); // On ground so not flying.
                 if (_rb.velocity.magnitude >= maxVelocity)
                 {
@@ -70,24 +81,25 @@ namespace Digging_Game.Scripts
                 if (Input.GetButton("Horizontal"))
                 {
                     animator.SetBool(IsDigHorizontal, true);
-                    _mineDown = false;
-                    _blockHit = Physics2D.Raycast(_shipPos, new Vector2(_movement, 0f), _xShipBound, _layerMask);
+                    mineDown = false;
+                    _blockHit = Physics2D.Raycast(_shipPos, new Vector2(movement, 0f), _xShipBound, _layerMask);
                 }
                 else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
                 {
-                    _mineDown = true;
+                    mineDown = true;
                     animator.SetBool(IsDigDown, true);
                     _blockHit = Physics2D.Raycast(_shipPos, Vector2.down, _yShipBound, _layerMask);
                 }
             }
             else
             {
+                shipGrounded = false;
                 animator.SetBool(IsFlying, true);
             }
             
             if (_blockHit)
             {
-                MineBlock(_mineDown, _blockHit);
+                MineBlock(mineDown, _blockHit);
             }
             else
             {
@@ -96,8 +108,8 @@ namespace Digging_Game.Scripts
                     animator.SetBool(IsDigDown, false);
                 }
                 animator.SetBool(IsDigHorizontal, false);
-                _movement = Input.GetAxis("Horizontal");
-                transform.position += new Vector3(_movement, 0, 0) * (speed * Time.deltaTime);
+                movement = Input.GetAxis("Horizontal");
+                transform.position += new Vector3(movement, 0, 0) * (speed * Time.deltaTime);
                 _shipPos = transform.position;
                 UpdateShipDirection();
             }
@@ -107,7 +119,10 @@ namespace Digging_Game.Scripts
         {
             if (Input.GetButton("Jump") || Input.GetKey(KeyCode.UpArrow))
             {
-                _rb.AddForce(new Vector2(0f, flyForce), ForceMode2D.Impulse);
+                if (!mineDown)
+                {
+                    _rb.AddForce(new Vector2(0f, flyForce), ForceMode2D.Impulse);
+                }
             }
 
             if (_rb.velocity.y > maxVelocity)
@@ -120,11 +135,11 @@ namespace Digging_Game.Scripts
         // Update the direction of ship's sprite
         private void UpdateShipDirection()
         {
-            if (_movement > 0 && _facingLeft)
+            if (movement > 0 && _facingLeft)
             {
                 _facingLeft = false;
                 _spriteRenderer.flipX = true;
-            } else if (_movement < 0 && !_facingLeft)
+            } else if (movement < 0 && !_facingLeft)
             {
                 _facingLeft = true;
                 _spriteRenderer.flipX = false;
@@ -148,15 +163,22 @@ namespace Digging_Game.Scripts
             _mineSeconds = 0f;
         }
 
-        private void MineBlock(bool mineDown, RaycastHit2D hit)
+        private void MineBlock(bool mineVertical, RaycastHit2D hit)
         {
+            if (!_playMining)
+            {
+                _playMining = true;
+                AudioManager.PlaySound("shipDrill");
+            }
+
             animator.SetBool(IsFlying, false);
 
             var hitScale = hit.transform.localScale;
             var hitPos = hit.transform.position;
 
-            if (hit && mineDown) // Vertical mining
+            if (hit && mineVertical) // Vertical mining
             {
+                animator.SetBool(IsDigHorizontal, false);
                 if (hit.collider.CompareTag("obstacle"))
                 {
                     _blockHit = new RaycastHit2D();
@@ -176,19 +198,20 @@ namespace Digging_Game.Scripts
             } 
             else // Horizontal mining
             {
+                //animator.SetBool(IsDigDown, false);
                 StartMiningTimer();
                 _block = hit.transform.gameObject.GetComponent<Block>();
                 if (_mineSeconds >= _block.timeToMineBlock)
                 {
                     // TODO: Block should move in opposite position from where it's being mined
-                    hit.transform.position = new Vector3(hitPos.x + (0.015f * _movement), hitPos.y, hitPos.z);
+                    hit.transform.position = new Vector3(hitPos.x + (0.015f * movement), hitPos.y, hitPos.z);
                     hit.transform.localScale = new Vector3(hitScale.x - 0.1f, hitScale.y, hitScale.z);
                     ResetMiningTimer();
                     ProcessMinedBlock();
 
                     // If movement -1 (left) get bounds.extents.max.x
                     // Else movement 1 (right) get bounds.extents.min.x
-                    if (_movement < 0)
+                    if (movement < 0)
                     {
                         transform.position = new Vector3(hit.collider.bounds.max.x + 0.40f, _shipPos.y, _shipPos.z);
                     }
@@ -206,7 +229,10 @@ namespace Digging_Game.Scripts
             {
                 score += _block.value;
                 _blockHit = new RaycastHit2D();
+                _playMining = false;
                 OnBlockMined?.Invoke(_block, _shipPos);
+                AudioManager.StopSound("shipDrill");
+                mineDown = false;
                 Destroy(_block.transform.gameObject);
             }
         }
