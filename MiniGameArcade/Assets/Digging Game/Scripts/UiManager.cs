@@ -1,4 +1,5 @@
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 namespace Digging_Game.Scripts
@@ -25,7 +26,11 @@ namespace Digging_Game.Scripts
         public TextMeshProUGUI score;
         public TextMeshProUGUI fuel;
         public TextMeshProUGUI health;
+
         public TextMeshProUGUI hiddenScore;
+
+        public TextMeshProUGUI oresLeft;
+
         
         private void Start()
         {
@@ -38,14 +43,32 @@ namespace Digging_Game.Scripts
 
             _fuelStation = FindObjectOfType<FuelStation>();
             _fuelStation.OnRefuel += OnRefuel;
+            
+            oresLeft.text = $"{_gm.oresToMine} {_gm.oreName} left!";
         }
 
         private void GameOver(Vector3 shipPos)
         {
+            health.text = $"Health: 0.00";
             var pos = new Vector3(shipPos.x, shipPos.y + 1.5f, shipPos.z);
             var text = Instantiate(gameOverObj, pos, Quaternion.identity, _ship.transform);
+
             //hiddenScore.text = score.text;
             FindObjectOfType<LeaderboardSender>().GetFinalScore();
+
+            var textMesh = text.GetComponentInChildren<TextMeshProUGUI>();
+            if (_gm.oresToMine <= 0)
+            {
+                textMesh.text = "You Win!";
+                textMesh.color = Color.green;
+                oresLeft.text = "";
+            }
+            else
+            {
+                textMesh.color = Color.red;
+            }
+
+
             _gm.OnGameOver -= GameOver;
         }
         
@@ -64,6 +87,8 @@ namespace Digging_Game.Scripts
             
             health.color = ship.health <= 35 ? Color.red : Color.green;
             health.text = $"Health: {ship.health:0.00}";
+
+            oresLeft.text = $"{_gm.oresToMine} {_gm.oreName} left!";
         }
 
         // Is activate when a block is mined
@@ -90,7 +115,7 @@ namespace Digging_Game.Scripts
 
         private void OnRefuel(Vector3 fuelStationPos, Transform fuelTransform, int refuelAmount)
         {
-            var fuelTextObj = Instantiate(textObj, fuelStationPos, Quaternion.identity, fuelTransform);
+            var fuelTextObj = Instantiate(textObj, fuelStationPos, Quaternion.identity, fuelTransform.GetChild(0).transform);
             var fuelText = fuelTextObj.GetComponentInChildren<TextMeshProUGUI>();
             fuelTextObj.transform.position = new Vector2(fuelStationPos.x + 3.5f, fuelStationPos.y + 1.5f);
             fuelText.text = $"+{refuelAmount}L";
