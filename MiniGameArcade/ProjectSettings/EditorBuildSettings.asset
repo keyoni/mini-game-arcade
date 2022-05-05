@@ -54,12 +54,12 @@ EditorBuildSettings:
     path: Assets/RandomToru/Scenes/Game 3.unity
     guid: a60e7941da7048e44bfe4a1bb04123b7
   - enabled: 1
-    path: Assets/Global/Other stuff/LeaderboardMenu.unity
+    path: Assets/Leaderboard/Scenes/LeaderboardMenu.unity
     guid: a50598040e0b3524da265ef86129dd50
   - enabled: 1
-    path: Assets/Global/Other stuff/FakeGameLeaderboard.unity
+    path: Assets/Leaderboard/Scenes/FakeGameLeaderboard.unity
     guid: ca12966e58f6d6848a528f6cacd5d4d8
   - enabled: 1
-    path: Assets/Global/Other stuff/FakeGame1_1.unity
+    path: Assets/Leaderboard/Leaderboard Objects/Fake Game/FakeGame1_1.unity
     guid: 2571f951f03695f4fb0e82abab816d41
   m_configObjects: {}

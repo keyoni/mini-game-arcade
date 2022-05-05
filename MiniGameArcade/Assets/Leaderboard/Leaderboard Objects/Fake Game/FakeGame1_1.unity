@@ -1458,6 +1458,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1164756179}
     m_Modifications:
+    - target: {fileID: 1273514984611686956, guid: 76bca87c7a6d6c94ca5753c4b03e57b4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3651798574001474323, guid: 76bca87c7a6d6c94ca5753c4b03e57b4, type: 3}
       propertyPath: m_Name
       value: ScoreBoardSubmit
