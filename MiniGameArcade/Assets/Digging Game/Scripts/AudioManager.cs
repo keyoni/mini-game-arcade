@@ -72,19 +72,19 @@ namespace Digging_Game.Scripts
         
         private void UpdateEngineSound()
         {
-            if (_ship.mineDown)
+            /*if (_ship.mineDown)
             {
                 return;
-            }
+            }*/
             
             // TODO: Fix this and find better sounds.
             var shipVerticalSpeed = (_shipRb.velocity.magnitude * 3f) / _ship.speed;
-            var shipSpeed = (Math.Abs(_ship.movement) * _ship.speed * Time.deltaTime) * 8f;
+            var shipSpeed = (Math.Abs(_ship.movement) * _ship.speed * Time.deltaTime) * 5f;
 
-            if (!_ship.shipGrounded || _ship.movement == 0f)
+            /*if (!_ship.shipGrounded || _ship.movement == 0f)
             {
                 shipSpeed = shipVerticalSpeed;
-            }
+            }*/
             
             if (shipSpeed < minEnginePitch)
             {
@@ -93,11 +93,11 @@ namespace Digging_Game.Scripts
             else
             {
                 _audioSource1.pitch = shipSpeed;
-                if (shipSpeed > maxEnginePitch)
-                {
-                    _audioSource1.pitch = maxEnginePitch;
-                }
             }
+            /*if (shipSpeed > maxEnginePitch)
+            {
+                _audioSource1.pitch = maxEnginePitch;
+            }*/
         }
     }
 }
