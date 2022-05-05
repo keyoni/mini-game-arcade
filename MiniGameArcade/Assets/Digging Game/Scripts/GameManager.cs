@@ -19,17 +19,22 @@ namespace Digging_Game.Scripts
 
         public delegate void GameOver(Vector3 shipPos);
         public event GameOver OnGameOver;
-        
+
+        public int oresToMine = 5;
+        public string oreName = "Iron";
+
         private void Start()
         {
             ship = FindObjectOfType<ShipController>();
             _surfacePos = FindObjectOfType<FuelStation>().transform.position;
+            ship.OnBlockMined += UpdateOresLeft;
         }
 
         private void Update()
         {
-            if (ship.health <= 0 || timeLeft <= 0)
+            if (ship.health <= 0f || timeLeft <= 0f || ship.fuel <= 0f || oresToMine <= 0)
             {
+                ship.OnBlockMined -= UpdateOresLeft;
                 OnGameOver?.Invoke(ship.transform.position);
             }
             else
@@ -38,6 +43,14 @@ namespace Digging_Game.Scripts
                 UpdateShipDepth();
                 UpdateFuel();
                 UpdateTimer();
+            }
+        }
+
+        private void UpdateOresLeft(Block block, Vector3 shipPos)
+        {
+            if (block.blockName == oreName)
+            {
+                oresToMine--;
             }
         }
 
