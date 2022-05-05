@@ -156,15 +156,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2800203079135311584, guid: d7c0604d6ce269e4abfa4da444e8c3ad, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.8
+      value: -8.681796
       objectReference: {fileID: 0}
     - target: {fileID: 2800203079135311584, guid: d7c0604d6ce269e4abfa4da444e8c3ad, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0.24
+      value: 6.604577
       objectReference: {fileID: 0}
     - target: {fileID: 2800203079135311584, guid: d7c0604d6ce269e4abfa4da444e8c3ad, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10
+      value: -9.994067
       objectReference: {fileID: 0}
     - target: {fileID: 2800203079135311585, guid: d7c0604d6ce269e4abfa4da444e8c3ad, type: 3}
       propertyPath: m_ClearFlags
@@ -180,7 +180,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2800203079135311585, guid: d7c0604d6ce269e4abfa4da444e8c3ad, type: 3}
       propertyPath: orthographic size
-      value: 11.39
+      value: 4.7
       objectReference: {fileID: 0}
     - target: {fileID: 2800203079135311585, guid: d7c0604d6ce269e4abfa4da444e8c3ad, type: 3}
       propertyPath: m_BackGroundColor.b
@@ -1444,7 +1444,7 @@ SpriteShapeRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -1992,7 +1992,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3651798574001474348, guid: 76bca87c7a6d6c94ca5753c4b03e57b4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10000
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3651798574001474348, guid: 76bca87c7a6d6c94ca5753c4b03e57b4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2052,15 +2052,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7011971963779798558, guid: 76bca87c7a6d6c94ca5753c4b03e57b4, type: 3}
       propertyPath: m_LocalScale.x
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7011971963779798558, guid: 76bca87c7a6d6c94ca5753c4b03e57b4, type: 3}
       propertyPath: m_LocalScale.y
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7011971963779798558, guid: 76bca87c7a6d6c94ca5753c4b03e57b4, type: 3}
       propertyPath: m_LocalScale.z
-      value: 5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9124437619208691015, guid: 76bca87c7a6d6c94ca5753c4b03e57b4, type: 3}
       propertyPath: m_Color.a
@@ -2867,7 +2867,7 @@ SpriteShapeRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -3660,7 +3660,7 @@ SpriteShapeRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -4023,7 +4023,7 @@ SpriteShapeRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
@@ -4283,7 +4283,7 @@ SpriteShapeRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
+  m_DynamicOccludee: 0
   m_StaticShadowCaster: 0
   m_MotionVectors: 1
   m_LightProbeUsage: 1
