@@ -146,6 +146,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06da83547f69d5743988c4cd41340dea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToMineBlock: 0.5
+  timeToMineBlock: 0.35
   value: 15
   blockName: Stone
