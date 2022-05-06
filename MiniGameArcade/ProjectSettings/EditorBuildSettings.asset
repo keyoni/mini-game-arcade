@@ -5,7 +5,61 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
   - enabled: 1
-    path: Assets/MainMenu/Scenes/SampleScene.unity
-    guid: 2cda990e2423bbf4892e6590ba056729
+    path: Assets/GameMenu1/Scenes/GameSelection.unity
+    guid: b59c12efae8fd794c8dc91eb331838ed
+  - enabled: 1
+    path: Assets/StartMenu/Scenes/ChangeProfile.unity
+    guid: e8072155a0a965d448916928f03b5a9d
+  - enabled: 1
+    path: Assets/StartMenu/Scenes/Credits.unity
+    guid: 0c8b0409b7566d34a9c28120fe268e61
+  - enabled: 1
+    path: Assets/StartMenu/Scenes/Options.unity
+    guid: 2631d3498525c014e9509929c493cc76
+  - enabled: 1
+    path: Assets/StartMenu/Scenes/StartMenu.unity
+    guid: 99743373423594b40b3c1d2fc4f61dbb
+  - enabled: 1
+    path: Assets/GameMenu1/Scenes/MainGameMenu1.unity
+    guid: a649d5059a106b64f9af622edccc1b63
+  - enabled: 1
+    path: Assets/Digging Game/Scenes/DigMainMenu.unity
+    guid: 253ff5e83624727449a5367c88c424f4
+  - enabled: 1
+    path: Assets/Golf Game/Scenes/Golf demo.unity
+    guid: 0a6ad278c4ca5834cbbe59579a362085
+  - enabled: 1
+    path: Assets/Digging Game/Scenes/Demo Scene.unity
+    guid: bb31c9c6ebbd7e24e94a714d320679f7
+  - enabled: 1
+    path: Assets/Golf Game/Scenes/GolfMainMenu.unity
+    guid: 734865be76063f44d981b542b7ecf6fc
+  - enabled: 1
+    path: Assets/Golf Game/Scenes/Test Level.unity
+    guid: a3daf9678c979c545b117a68e7d908b7
+  - enabled: 0
+    path: Assets/RandomToru/Scenes/BaseTour.unity
+    guid: 95443fa174d728c4498ea55d1a94bfa8
+  - enabled: 0
+    path: Assets/RandomToru/Scenes/Game 1.unity
+    guid: 48578f7192a6d9b44aacab1f3cc7fa44
+  - enabled: 0
+    path: Assets/RandomToru/Scenes/Game 2.unity
+    guid: 958241ad19551e148a9fcc68b86c92ad
+  - enabled: 0
+    path: Assets/RandomToru/Scenes/Game 3.unity
+    guid: a60e7941da7048e44bfe4a1bb04123b7
+  - enabled: 1
+    path: Assets/Global/Other stuff/LeaderboardMenu.unity
+    guid: a50598040e0b3524da265ef86129dd50
+  - enabled: 1
+    path: Assets/Global/Other stuff/FakeGameLeaderboard.unity
+    guid: ca12966e58f6d6848a528f6cacd5d4d8
+  - enabled: 1
+    path: Assets/Global/Other stuff/FakeGame1_1.unity
+    guid: 2571f951f03695f4fb0e82abab816d41
   m_configObjects: {}
