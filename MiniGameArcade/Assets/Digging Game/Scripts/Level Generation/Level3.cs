@@ -1,22 +1,25 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-// Generates a level using perlin noise.
-// Helpful resource: https://www.youtube.com/watch?v=bG0uEXV6aHQ
+/*
+ *  Author: Alfredo Hernandez
+ *  Copy of level generation script. Modified by Philip
+ *  For use in level 3 scene. Includes different ore types
+ */
 
-namespace Digging_Game.Scripts
+namespace Digging_Game.Scripts.Level_Generation
 {
-    public class LevelGenerator : MonoBehaviour
+    public class Level3 : MonoBehaviour
     {
         public GameObject airPrefab;
         public GameObject dirtPrefab;
         public GameObject stonePrefab;
-        public GameObject copperPrefab;
+        public GameObject mythrilPrefab;
         public GameObject ironPrefab;
-        public GameObject goldPrefab;
-        public GameObject diamondPrefab;
+        public GameObject rubyPrefab;
+        public GameObject emeraldPrefab;
         public GameObject obsidianPrefab;
-        
+        public GameObject sapphirePrefab;
         public Transform levelRoot;
 
         public int levelHeight = 10;
@@ -60,11 +63,15 @@ namespace Digging_Game.Scripts
             {
                 if (perlinOutput < 0.07f && row < levelHeight / 3)
                 {
-                    blockToCreate = diamondPrefab;
+                    blockToCreate = emeraldPrefab;
                 }
                 else if (perlinOutput < 0.10f && row < levelHeight / 2)
                 {
-                    blockToCreate = goldPrefab;
+                    blockToCreate = rubyPrefab;
+                }
+                else if (perlinOutput < 0.12f && row < levelHeight / 2)
+                {
+                    blockToCreate = sapphirePrefab;
                 }
                 else if (perlinOutput < 0.15f && row < levelHeight - 10)
                 {
@@ -72,7 +79,7 @@ namespace Digging_Game.Scripts
                 }
                 else if (perlinOutput < 0.20f)
                 {
-                    blockToCreate = copperPrefab;
+                    blockToCreate = mythrilPrefab;
                 }
                 else if (perlinOutput < 0.25f && row < levelHeight - 2)
                 {

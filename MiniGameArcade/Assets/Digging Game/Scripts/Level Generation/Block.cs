@@ -1,7 +1,11 @@
 using System;
 using UnityEngine;
 
-namespace Digging_Game.Scripts
+/*  Author: Alfredo Hernandez
+ *  Block script for blocks
+ */
+
+namespace Digging_Game.Scripts.Level_Generation
 {
     public class Block : MonoBehaviour
     {

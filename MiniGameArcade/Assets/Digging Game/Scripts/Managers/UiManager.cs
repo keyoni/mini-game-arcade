@@ -1,12 +1,13 @@
+using Digging_Game.Scripts.Level_Generation;
 using TMPro;
-using Unity.VisualScripting;
 using UnityEngine;
 
-namespace Digging_Game.Scripts
+/*  Author: Alfredo Hernandez
+ *  UI manager to handle updates to the UI
+ */
+
+namespace Digging_Game.Scripts.Managers
 {
-    /**
-     *  User interface code goes here
-     */
     public class UiManager : MonoBehaviour
     {
         private ShipController _ship;

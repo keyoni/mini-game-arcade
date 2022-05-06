@@ -1,22 +1,26 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
+/*  Author: Alfredo Hernandez
+ *  Original level generation script.
+ */
+
 // Generates a level using perlin noise.
 // Helpful resource: https://www.youtube.com/watch?v=bG0uEXV6aHQ
 
-namespace Digging_Game.Scripts
+namespace Digging_Game.Scripts.Level_Generation
 {
-    public class Level3 : MonoBehaviour
+    public class LevelGenerator : MonoBehaviour
     {
         public GameObject airPrefab;
         public GameObject dirtPrefab;
         public GameObject stonePrefab;
-        public GameObject mythrilPrefab;
+        public GameObject copperPrefab;
         public GameObject ironPrefab;
-        public GameObject rubyPrefab;
-        public GameObject emeraldPrefab;
+        public GameObject goldPrefab;
+        public GameObject diamondPrefab;
         public GameObject obsidianPrefab;
-        public GameObject sapphirePrefab;
+        
         public Transform levelRoot;
 
         public int levelHeight = 10;
@@ -60,15 +64,11 @@ namespace Digging_Game.Scripts
             {
                 if (perlinOutput < 0.07f && row < levelHeight / 3)
                 {
-                    blockToCreate = emeraldPrefab;
+                    blockToCreate = diamondPrefab;
                 }
                 else if (perlinOutput < 0.10f && row < levelHeight / 2)
                 {
-                    blockToCreate = rubyPrefab;
-                }
-                else if (perlinOutput < 0.12f && row < levelHeight / 2)
-                {
-                    blockToCreate = sapphirePrefab;
+                    blockToCreate = goldPrefab;
                 }
                 else if (perlinOutput < 0.15f && row < levelHeight - 10)
                 {
@@ -76,7 +76,7 @@ namespace Digging_Game.Scripts
                 }
                 else if (perlinOutput < 0.20f)
                 {
-                    blockToCreate = mythrilPrefab;
+                    blockToCreate = copperPrefab;
                 }
                 else if (perlinOutput < 0.25f && row < levelHeight - 2)
                 {

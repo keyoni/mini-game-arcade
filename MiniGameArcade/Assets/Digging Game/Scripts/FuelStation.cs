@@ -1,5 +1,9 @@
 using UnityEngine;
 
+/*  Author: Alfredo Hernandez
+ *  Fuel Station script to handle collision with fuel station
+ */
+
 namespace Digging_Game.Scripts
 {
     public class FuelStation : MonoBehaviour

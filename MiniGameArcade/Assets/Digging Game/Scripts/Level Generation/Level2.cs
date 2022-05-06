@@ -1,10 +1,13 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-// Generates a level using perlin noise.
-// Helpful resource: https://www.youtube.com/watch?v=bG0uEXV6aHQ
+/*
+ *  Author: Alfredo Hernandez
+ *  Copy of level generation script. Modified by Philip
+ *  For use in level 2 scene. Includes different ore types
+ */
 
-namespace Digging_Game.Scripts
+namespace Digging_Game.Scripts.Level_Generation
 {
     public class Level2 : MonoBehaviour
     {

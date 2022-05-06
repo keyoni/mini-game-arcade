@@ -1,7 +1,11 @@
-using TMPro;
+using Digging_Game.Scripts.Level_Generation;
 using UnityEngine;
 
-namespace Digging_Game.Scripts
+/*  Author: Alfredo Hernandez
+ *  Game manager to manage changes in game state.
+ */
+
+namespace Digging_Game.Scripts.Managers
 {
     public class GameManager : MonoBehaviour
     {
