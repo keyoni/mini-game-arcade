@@ -553,7 +553,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7836273159710241728, guid: 5ff5b3547659ba24887c3f729c981507, type: 3}
       propertyPath: leaderboardToSelect.Array.size
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 7836273159710241728, guid: 5ff5b3547659ba24887c3f729c981507, type: 3}
       propertyPath: leaderboardToSelect.Array.data[0]
@@ -563,6 +563,10 @@ PrefabInstance:
       propertyPath: leaderboardToSelect.Array.data[1]
       value: 
       objectReference: {fileID: 11400000, guid: 54fdea1fe9cf804428e2a86c7a118d80, type: 2}
+    - target: {fileID: 7836273159710241728, guid: 5ff5b3547659ba24887c3f729c981507, type: 3}
+      propertyPath: leaderboardToSelect.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 774ec251b26cefc44a7d1ff486f0e49d, type: 2}
     - target: {fileID: 7836273159710241731, guid: 5ff5b3547659ba24887c3f729c981507, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

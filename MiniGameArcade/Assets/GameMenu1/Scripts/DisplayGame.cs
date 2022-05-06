@@ -29,7 +29,7 @@ public class DisplayGame : MonoBehaviour
         backgroundMusic = game.backgroundMusic;
         playMusic();
         playBtn.onClick.RemoveAllListeners();
-        playBtn.onClick.AddListener(() =>menuNav.SceneChange(game.leaderboardSceneName));
+        playBtn.onClick.AddListener(() =>menuNav.SceneChange(game.gameLevelOneSceneName));
         leaderBtn.onClick.RemoveAllListeners();
         leaderBtn.onClick.AddListener(() =>menuNav.SceneChange(game.leaderboardSceneName));
     }

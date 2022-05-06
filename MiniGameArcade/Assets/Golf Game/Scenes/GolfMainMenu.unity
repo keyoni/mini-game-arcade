@@ -420,7 +420,7 @@ MonoBehaviour:
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: Test Level
+          m_StringArgument: AlexLevel1
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &249427387
@@ -743,16 +743,16 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 428008005}
-        m_TargetAssemblyTypeName: 
-        m_MethodName: 
-        m_Mode: 1
+      - m_Target: {fileID: 1076744694}
+        m_TargetAssemblyTypeName: MenuNavagation, Assembly-CSharp
+        m_MethodName: SceneChange
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: 
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: AlexLevel2
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &457340534
@@ -1389,7 +1389,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: d5792d5273513444ca069fbe1052ff29, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 0.697
+  m_Volume: 0.12
   m_Pitch: 1
   Loop: 0
   Mute: 0
