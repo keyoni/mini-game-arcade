@@ -1478,15 +1478,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1785608204}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1362d7a60b1c57e468b3fa21c965dda2, type: 3}
+  m_Script: {fileID: 11500000, guid: 08ab343e13255b84d9c887cae9655baf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   airPrefab: {fileID: 5254517500276030202, guid: 5e615128ab7e39a41a44db94164301bc, type: 3}
   dirtPrefab: {fileID: 5254517500276030202, guid: 88addffee1bdc424981d75e3973ffb58, type: 3}
   stonePrefab: {fileID: 2807204710108004247, guid: 084321945a65d52438fba3c1c087a7ad, type: 3}
-  copperPrefab: {fileID: 3246317405105335700, guid: 2e7bc4148ee077442b4359a968c14ee9, type: 3}
+  mythrilPrefab: {fileID: 5254517500276030202, guid: 20c9a6c567a192b42ac0d30062377278, type: 3}
   ironPrefab: {fileID: 3246317405105335700, guid: 771362d85d293cc4cb3fcac81bd39c40, type: 3}
-  cobaltPrefab: {fileID: 5254517500276030202, guid: 12be420a6e7e5124d91e541b27f7b18e, type: 3}
+  rubyPrefab: {fileID: 5254517500276030202, guid: a1ae64fe4acef4d47a3cdacfae534acf, type: 3}
   emeraldPrefab: {fileID: 5254517500276030202, guid: 44478f2b83a1971499e9479f5313fa5c, type: 3}
   obsidianPrefab: {fileID: 3246317405105335700, guid: 86d27670248a2504f8cd7d481a7ad296, type: 3}
   sapphirePrefab: {fileID: 5254517500276030202, guid: 698fd3bbde4f0dc44a682a53435a1612, type: 3}
