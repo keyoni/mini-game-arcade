@@ -1,9 +1,11 @@
 using System;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Audio;
 
-namespace Digging_Game.Scripts
+/*  Author: Alfredo Hernandez
+ *  Audio manager to manage sounds in game
+ */
+
+namespace Digging_Game.Scripts.Managers
 {
     public class AudioManager : MonoBehaviour
     {
