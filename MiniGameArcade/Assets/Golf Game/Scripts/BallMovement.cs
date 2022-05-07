@@ -9,6 +9,13 @@ public class BallMovement : MonoBehaviour
 
     private Rigidbody2D rb;
     private bool arrowActive = false;
+<<<<<<< Updated upstream
+=======
+    private bool meterActive = false;
+    private Vector2 dir;
+    private int powerMeterDir = 1;
+    public static bool goal = false;
+>>>>>>> Stashed changes
 
     void Start() {
         rb = GetComponent<Rigidbody2D>();
