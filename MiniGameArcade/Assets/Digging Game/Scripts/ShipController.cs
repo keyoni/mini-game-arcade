@@ -1,5 +1,10 @@
+using Digging_Game.Scripts.Level_Generation;
 using TMPro;
 using UnityEngine;
+
+/*  Author: Alfredo Hernandez
+ *  Ship controller for controlling ship
+ */
 
 namespace Digging_Game.Scripts
 {
@@ -63,7 +68,7 @@ namespace Digging_Game.Scripts
         {
             if (!_playIdle)
             {
-                AudioManager.PlaySound("shipIdle");
+                Managers.AudioManager.PlaySound("shipIdle");
                 _playIdle = true;
             }
             
@@ -168,7 +173,7 @@ namespace Digging_Game.Scripts
             if (!_playMining)
             {
                 _playMining = true;
-                AudioManager.PlaySound("shipDrill");
+                Managers.AudioManager.PlaySound("shipDrill");
             }
 
             animator.SetBool(IsFlying, false);
@@ -231,7 +236,7 @@ namespace Digging_Game.Scripts
                 _blockHit = new RaycastHit2D();
                 _playMining = false;
                 OnBlockMined?.Invoke(_block, _shipPos);
-                AudioManager.StopSound("shipDrill");
+                Managers.AudioManager.StopSound("shipDrill");
                 mineDown = false;
                 Destroy(_block.transform.gameObject);
             }

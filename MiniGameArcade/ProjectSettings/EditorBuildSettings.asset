@@ -36,7 +36,7 @@ EditorBuildSettings:
     path: Assets/Golf Game/Scenes/Golf demo.unity
     guid: 0a6ad278c4ca5834cbbe59579a362085
   - enabled: 1
-    path: Assets/Digging Game/Scenes/Demo Scene.unity
+    path: Assets/Digging Game/Scenes/Level1-Main.unity
     guid: bb31c9c6ebbd7e24e94a714d320679f7
   - enabled: 1
     path: Assets/Golf Game/Scenes/GolfMainMenu.unity
