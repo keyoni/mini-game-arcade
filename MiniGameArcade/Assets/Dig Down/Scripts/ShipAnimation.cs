@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /*  Author: Alfredo Hernandez
- *  Controls ship animations and sprite direction.
+ *  Description: Controls ship animations and sprite direction.
  */
 
 namespace Dig_Down.Scripts

@@ -2,7 +2,7 @@ using Dig_Down.Scripts.Level_Generation;
 using UnityEngine;
 
 /*  Author: Alfredo Hernandez
- *  Game manager to manage changes in game state.
+ *  Description: Game manager to manage changes in game state.
  */
 
 namespace Dig_Down.Scripts.Managers
@@ -30,11 +30,8 @@ namespace Dig_Down.Scripts.Managers
 
         private void Start()
         {
-            ship = FindObjectOfType<ShipController>();
-            shipMining = ship.GetComponent<ShipMining>();
             _surfacePos = FindObjectOfType<FuelStation>().transform.position;
             shipMining.OnBlockMined += UpdateOresLeft;
-            //shipMining.OnBlockMined += UpdateGameTimer;
         }
 
         private void Update()
@@ -52,12 +49,6 @@ namespace Dig_Down.Scripts.Managers
                 UpdateTimer();
             }
         }
-
-        // Update time remaining until game is over using block mined value.
-        /*private void UpdateGameTimer(Block block, Vector3 shipPos)
-        {
-            timeLeft += block.timeValue * Time.deltaTime;
-        }*/
 
         private void UpdateOresLeft(Block block, Vector3 shipPos)
         {

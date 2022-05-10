@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /*  Author: Alfredo Hernandez
- *  Controls ship movement and fall damage
+ *  Description: Controls ship movement and fall damage
  */
 
 namespace Dig_Down.Scripts
@@ -12,6 +12,7 @@ namespace Dig_Down.Scripts
         public float fuel = 100f;
         public int depth;
         public float health = 100f;
+        public float maxHealth = 150f;
         public float score;
         public float maxFuel = 200f;
         public float speed = 3f;
@@ -24,7 +25,7 @@ namespace Dig_Down.Scripts
 
         private ShipMining _shipMining;
 
-        private float _fallDamageMultiplier = 0.075f;
+        public float fallDamageMultiplier = 0.95f;
 
         private void Start()
         {
@@ -40,7 +41,7 @@ namespace Dig_Down.Scripts
             {
                 if (_rb.velocity.magnitude >= maxVelocity)
                 {
-                    health -= _fallDamageMultiplier * _rb.velocity.magnitude;
+                    health -= fallDamageMultiplier * _rb.velocity.magnitude;
                 }
             }
             

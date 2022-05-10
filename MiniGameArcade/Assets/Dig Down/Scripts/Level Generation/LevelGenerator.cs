@@ -2,11 +2,9 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 
 /*  Author: Alfredo Hernandez
- *  Original level generation script.
+ *  Description: Original level generation script. Generates a level using perlin noise.
+ *  Helpful Resource: https://www.youtube.com/watch?v=bG0uEXV6aHQ
  */
-
-// Generates a level using perlin noise.
-// Helpful resource: https://www.youtube.com/watch?v=bG0uEXV6aHQ
 
 namespace Dig_Down.Scripts.Level_Generation
 {

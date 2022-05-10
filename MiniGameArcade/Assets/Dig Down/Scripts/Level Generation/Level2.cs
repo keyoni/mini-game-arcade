@@ -3,7 +3,7 @@ using Random = UnityEngine.Random;
 
 /*
  *  Author: Alfredo Hernandez
- *  Copy of level generation script. Modified by Philip
+ *  Description: Copy of level generation script. Modified by Philip
  *  For use in level 2 scene. Includes different ore types
  */
 

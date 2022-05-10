@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 /*  Author: Alfredo Hernandez
- *  Audio manager to manage sounds in game
+ *  Description: Audio manager to manage sounds in game
  */
 
 namespace Dig_Down.Scripts.Managers

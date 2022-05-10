@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /*  Author: Alfredo Hernandez
- *  Block script for blocks
+ *  Description: Block script for blocks
  */
 
 namespace Dig_Down.Scripts.Level_Generation

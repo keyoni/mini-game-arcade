@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 
 /*  Author: Alfredo Hernandez
- *  Process mined blocks. Determine which block should be mined using raycasts.
+ *  Description: Process mined blocks. Determine which block should be mined using raycasts.
  */
 
 namespace Dig_Down.Scripts
@@ -31,6 +31,8 @@ namespace Dig_Down.Scripts
 
         private GameManager _gameManager;
 
+        private bool _shipMining;
+
         private void Start()
         {
             _ship = GetComponent<ShipController>();
@@ -53,6 +55,13 @@ namespace Dig_Down.Scripts
             {
                 StartMiningBlock(YRayHit, true);
             }
+
+            // Dont play sound for drilling if no keys are pressed
+            if (!Input.GetButton("Horizontal") && !Input.GetButton("VerticalDownOnly"))
+            {
+                Dig_Down.Scripts.Managers.AudioManager.StopSound("shipDrill");
+                _shipMining = false;
+            }
         }
 
         private void StartMiningBlock(RaycastHit2D hit, bool mineDown)
@@ -65,7 +74,12 @@ namespace Dig_Down.Scripts
                     YRayHit = new RaycastHit2D();
                     return;
                 }
-                //Debug.Log("HIT BLOCK");
+
+                if (!_shipMining)
+                {
+                    Dig_Down.Scripts.Managers.AudioManager.PlaySound("shipDrill");
+                    _shipMining = true;
+                }
                 DamageBlock(hit, mineDown);
             }
         }
@@ -78,11 +92,7 @@ namespace Dig_Down.Scripts
             {
                 _block.health -= (drillDamageMultiplier * _block.damageMultiplier) * Time.deltaTime;
             }
-            else
-            {
-                _block.health = 0f;
-            }
-            
+
             if (mineDown)
             {
                 // Center the ship over the block when mining down.
@@ -106,17 +116,18 @@ namespace Dig_Down.Scripts
                     Resources.Load("DigDown/Animations/Blocks/BlockAnimator", typeof(RuntimeAnimatorController));
                 hit.transform.AddComponent<BlockAnimation>();
             }
-            
             DestroyBlock();
         }
 
         private void DestroyBlock()
         {
-            if (_block.health > 0) return;
-            OnBlockMined?.Invoke(_block, _shipPos);
+            if (_block.health > 0f) return;
+            _block.health = 0f;
             _gameManager.timeLeft += _block.timeValue;
             _ship.score += _block.value;
+            _shipMining = false;
             Dig_Down.Scripts.Managers.AudioManager.StopSound("shipDrill");
+            OnBlockMined?.Invoke(_block, _shipPos);
             Destroy(_block.gameObject); // Added a time delay to makeup for coroutine wait
         }
     }

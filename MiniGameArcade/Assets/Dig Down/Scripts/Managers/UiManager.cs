@@ -1,9 +1,10 @@
 using Dig_Down.Scripts.Level_Generation;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 /*  Author: Alfredo Hernandez
- *  UI manager to handle updates to the UI
+ *  Description: UI manager to handle updates to the UI
  */
 
 namespace Dig_Down.Scripts.Managers
@@ -30,6 +31,10 @@ namespace Dig_Down.Scripts.Managers
         public TextMeshProUGUI health;
         public TextMeshProUGUI oresLeft;
         
+        // Bars
+        public Image fuelBarFill;
+        public Image healthBarFill;
+
         private void Start()
         {
             _ship = FindObjectOfType<ShipController>();
@@ -71,6 +76,8 @@ namespace Dig_Down.Scripts.Managers
             // TODO: Make fuel text flash on low fuel
             fuel.color = ship.fuel <= 25 ? Color.red : Color.yellow;
             fuel.text = $"Fuel: {ship.fuel} L";
+            fuelBarFill.fillAmount = Mathf.Clamp(ship.fuel / ship.maxFuel, 0f, 1f);
+            fuelBarFill.color = ship.fuel <= 25 ? Color.red : Color.green;
             
             score.text = $"Score: {ship.score}";
             depth.text = ship.depth > 0 ? $"Depth: -{ship.depth} ft." : $"Depth: {ship.depth} ft.";
@@ -80,6 +87,7 @@ namespace Dig_Down.Scripts.Managers
             
             health.color = ship.health <= 35 ? Color.red : Color.green;
             health.text = $"Health: {ship.health:0.00}";
+            healthBarFill.fillAmount = Mathf.Clamp(ship.health / ship.maxHealth, 0f, 1f);
 
             oresLeft.text = $"{_gm.oresToMine} {_gm.oreName} left!";
         }

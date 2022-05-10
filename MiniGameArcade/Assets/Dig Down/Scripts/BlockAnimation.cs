@@ -1,6 +1,10 @@
 using Dig_Down.Scripts.Level_Generation;
 using UnityEngine;
 
+/*  Author: Alfredo Hernandez
+ *  Description: Control animation state for blocks.
+ */
+
 namespace Dig_Down.Scripts
 {
     public class BlockAnimation : MonoBehaviour

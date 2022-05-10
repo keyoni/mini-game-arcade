@@ -1,7 +1,7 @@
 using UnityEngine;
 
 /*  Author: Alfredo Hernandez
- *  Day cycle script
+ *  Description: Day cycle script
  */
 
 // Ref: https://docs.unity3d.com/ScriptReference/Transform.RotateAround.html
