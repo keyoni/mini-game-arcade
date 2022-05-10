@@ -105,7 +105,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.0742188, y: 1.0002613}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
   value: 25
   blockName: Dirt
   health: 100
-  damageMultiplier: 25
+  damageMultiplier: 128
 --- !u!1 &8300961999065579394
 GameObject:
   m_ObjectHideFlags: 0
