@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LeaderboardSender: MonoBehaviour
 {
@@ -17,7 +18,7 @@ public class LeaderboardSender: MonoBehaviour
 
     [SerializeField] private GameObject yourScore;
 
-    [SerializeField] private GameObject NameScoreSubmit;
+    [SerializeField] private Button NameScoreSubmit;
     // Start is called before the first frame update
     private int highScoreRank = -1;
     void Start()
@@ -45,6 +46,7 @@ public class LeaderboardSender: MonoBehaviour
     }
     public void GetFinalScore()
     {
+        
         scoreText.text = currentScore.text;
         score = Int32.Parse(currentScore.text);
         if (CheckIfHighScore())
@@ -57,6 +59,7 @@ public class LeaderboardSender: MonoBehaviour
 
      bool CheckIfHighScore()
     {
+        NameScoreSubmit.interactable = false;
       //ToDo: If High score, do high score animation
         string playerPrefsBase = this.gameObject.scene.name;
         if (score > PlayerPrefs.GetInt(playerPrefsBase + "[1].score"))
@@ -80,6 +83,7 @@ public class LeaderboardSender: MonoBehaviour
 
      public void SetHighScore()
     {
+        
         string playerPrefsBase = this.gameObject.scene.name;
         switch (highScoreRank)
         {
