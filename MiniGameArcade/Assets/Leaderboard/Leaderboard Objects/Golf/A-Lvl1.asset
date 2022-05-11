@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a439ae7cba20cbb46a6e819bc68a9193, type: 3}
-  m_Name: GolfTest
+  m_Name: A-Lvl1
   m_EditorClassIdentifier: 
-  lbIndex: -1
-  levelTitle: Golf Test
-  playerPrefsBase: Golf demo_LBTest
+  lbIndex: 0
+  levelTitle: Medium #1
+  playerPrefsBase: AlexLevel1

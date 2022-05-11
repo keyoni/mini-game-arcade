@@ -19,3 +19,4 @@ MonoBehaviour:
   leaderboardSceneName: GolfLeaderboard
   gameLevelOneSceneName: GolfMainMenu
   backgroundMusic: {fileID: 8300000, guid: d5792d5273513444ca069fbe1052ff29, type: 3}
+  ava: 1

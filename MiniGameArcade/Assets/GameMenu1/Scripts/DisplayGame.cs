@@ -16,6 +16,7 @@ public class DisplayGame : MonoBehaviour
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private Button leaderBtn;
     [SerializeField] private MenuNavagation menuNav;
+    [SerializeField] private GameObject locked;
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
@@ -27,14 +28,26 @@ public class DisplayGame : MonoBehaviour
         gameInfo.text = game.gameInfo;
         gameImage.sprite = game.gameImage;
         backgroundMusic = game.backgroundMusic;
-        playMusic();
+        PlayMusic();
         playBtn.onClick.RemoveAllListeners();
-        playBtn.onClick.AddListener(() =>menuNav.SceneChange(game.gameLevelOneSceneName));
         leaderBtn.onClick.RemoveAllListeners();
-        leaderBtn.onClick.AddListener(() =>menuNav.SceneChange(game.leaderboardSceneName));
+        if (game.ava)
+        { 
+            locked.SetActive(false);
+            playBtn.interactable=true;
+            leaderBtn.interactable = true;
+            playBtn.onClick.AddListener(() => menuNav.SceneChange(game.gameLevelOneSceneName));
+            leaderBtn.onClick.AddListener(() => menuNav.SceneChange(game.leaderboardSceneName));
+        }
+        else
+        {
+            locked.SetActive(true);
+            playBtn.interactable=false;
+            leaderBtn.interactable = false;
+        }
     }
 
-    public void playMusic()
+    public void PlayMusic()
     {
         audioSource.Stop();
         audioSource.PlayOneShot(backgroundMusic);

@@ -1220,6 +1220,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Cheat
       objectReference: {fileID: 0}
+    - target: {fileID: 895892937957774194, guid: 8d5f846e2418dae40aaaed4f9685c6af, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 895892937957774195, guid: 8d5f846e2418dae40aaaed4f9685c6af, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

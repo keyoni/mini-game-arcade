@@ -384,9 +384,21 @@ PrefabInstance:
     m_TransformParent: {fileID: 938841410}
     m_Modifications:
     - target: {fileID: 7836273159710241728, guid: 5ff5b3547659ba24887c3f729c981507, type: 3}
+      propertyPath: leaderboardToSelect.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7836273159710241728, guid: 5ff5b3547659ba24887c3f729c981507, type: 3}
       propertyPath: leaderboardToSelect.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 2587767c573c0204aa6fb49d8cddb1bf, type: 2}
+      objectReference: {fileID: 11400000, guid: 033c1440179c9e74d8a693045c7920cc, type: 2}
+    - target: {fileID: 7836273159710241728, guid: 5ff5b3547659ba24887c3f729c981507, type: 3}
+      propertyPath: leaderboardToSelect.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: ffd8b4fa001aef44a8c7a8c032167d33, type: 2}
+    - target: {fileID: 7836273159710241728, guid: 5ff5b3547659ba24887c3f729c981507, type: 3}
+      propertyPath: leaderboardToSelect.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: 36830c60eec137c448ecf8e723688e91, type: 2}
     - target: {fileID: 7836273159710241731, guid: 5ff5b3547659ba24887c3f729c981507, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

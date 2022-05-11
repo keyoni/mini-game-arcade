@@ -15,7 +15,8 @@ MonoBehaviour:
   gameIndex: 3
   gameTitle: Dig  Down!
   gameInfo: Dig Dig Dig!
-  gameImage: {fileID: 21300000, guid: c3db95c19818f544490129fad5de01a1, type: 3}
+  gameImage: {fileID: 21300000, guid: 7a7928a547620cb4db6aae2fba504774, type: 3}
   leaderboardSceneName: DigLeaderboard
   gameLevelOneSceneName: DigMainMenu
   backgroundMusic: {fileID: 8300000, guid: 25cbfb801956b9c45a63b08ff9c463dc, type: 3}
+  ava: 1

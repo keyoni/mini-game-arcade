@@ -901,7 +901,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 251602823
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 8bed2d4d29bc16640b78c87c6b018fdd, type: 3}
   m_Color: {r: 0.84339625, g: 0.86577624, b: 1, a: 1}
@@ -3153,7 +3153,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 251602823
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 2cec473631d8be24f8256b49de705a66, type: 3}
   m_Color: {r: 0.84339625, g: 0.86577624, b: 1, a: 1}
@@ -7565,7 +7565,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 251602823
-  m_SortingLayer: 3
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: f18ff50f1806b4e4780c5901e6dcbdb9, type: 3}
   m_Color: {r: 0.84339625, g: 0.86577624, b: 1, a: 1}
@@ -7858,6 +7858,10 @@ PrefabInstance:
     - target: {fileID: 895892937957774194, guid: 8d5f846e2418dae40aaaed4f9685c6af, type: 3}
       propertyPath: m_Name
       value: Cheat
+      objectReference: {fileID: 0}
+    - target: {fileID: 895892937957774194, guid: 8d5f846e2418dae40aaaed4f9685c6af, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 895892937957774195, guid: 8d5f846e2418dae40aaaed4f9685c6af, type: 3}
       propertyPath: m_Pivot.x

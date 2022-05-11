@@ -23,8 +23,8 @@ public class LeaderboardSender: MonoBehaviour
     void Start()
     {
         this.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(0, 0,-100000);
-        GameOverTest.GameEnds += Active;
-        GameOverTest.GameEnds += GetFinalScore;
+        //GameOverTest.GameEnds += Active;
+        //GameOverTest.GameEnds += GetFinalScore;
         
         CreatingLeaderboard();
 
