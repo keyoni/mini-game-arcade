@@ -22,9 +22,10 @@ public class LeaderboardSender: MonoBehaviour
     private int highScoreRank = -1;
     void Start()
     {
-        this.gameObject.SetActive(false);
-        GameOverTest.GameEnds += Active;
-        GameOverTest.GameEnds += GetFinalScore;
+        this.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(0, 0,-100000);
+        //GameOverTest.GameEnds += Active;
+        //GameOverTest.GameEnds += GetFinalScore;
+        
         CreatingLeaderboard();
 
     }
@@ -35,21 +36,23 @@ public class LeaderboardSender: MonoBehaviour
         
     }
 
-    void Active()
+    public void Active()
     {
-        gameObject.SetActive(true);
+        this.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(0, 0,0);
+        //gameObject.SetActive(true);
+        //GetFinalScore();
+        
     }
-    void GetFinalScore()
+    public void GetFinalScore()
     {
         scoreText.text = currentScore.text;
         score = Int32.Parse(currentScore.text);
         if (CheckIfHighScore())
         {
             print(highScoreRank);
-            //Do high score stuff
+         
         };
-        
-        //ToDo send score
+        Active();
     }
 
      bool CheckIfHighScore()
@@ -107,7 +110,7 @@ public class LeaderboardSender: MonoBehaviour
     }
     
 
-
+//TODO move to Leaderboard pages 
     //https://forum.unity.com/threads/leaderboard-script-using-playerprefs.257900/
     private void CreatingLeaderboard()
     {

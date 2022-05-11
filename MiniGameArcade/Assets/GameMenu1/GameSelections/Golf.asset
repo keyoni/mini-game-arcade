@@ -15,7 +15,8 @@ MonoBehaviour:
   gameIndex: 0
   gameTitle: Golf
   gameInfo: Use the power meter to hit the ball!
-  gameImage: {fileID: 21300000, guid: 354d000ca7b17414e84555e8d17d1944, type: 3}
-  leaderboardSceneName: 
+  gameImage: {fileID: 21300000, guid: 9b4d94f12a814eb408619f16084bda30, type: 3}
+  leaderboardSceneName: GolfLeaderboard
   gameLevelOneSceneName: GolfMainMenu
   backgroundMusic: {fileID: 8300000, guid: d5792d5273513444ca069fbe1052ff29, type: 3}
+  ava: 1
