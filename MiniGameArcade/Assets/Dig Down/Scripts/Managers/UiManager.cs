@@ -39,7 +39,7 @@ namespace Dig_Down.Scripts.Managers
         {
             _ship = FindObjectOfType<ShipController>();
             _shipMining = _ship.GetComponent<ShipMining>();
-            _shipMining.OnBlockMined += OnBlockMined; // Subscribe to delegate
+            _shipMining.OnBlockMined += OnBlockMined;
 
             _gm = FindObjectOfType<GameManager>();
             _gm.OnUIUpdate += OnUIUpdate;
@@ -73,7 +73,6 @@ namespace Dig_Down.Scripts.Managers
         
         private void OnUIUpdate(ShipController ship, float timeLeft)
         {
-            // TODO: Make fuel text flash on low fuel
             fuel.color = ship.fuel <= 25 ? Color.red : Color.yellow;
             fuel.text = $"Fuel: {ship.fuel} L";
             fuelBarFill.fillAmount = Mathf.Clamp(ship.fuel / ship.maxFuel, 0f, 1f);
@@ -91,8 +90,7 @@ namespace Dig_Down.Scripts.Managers
 
             oresLeft.text = $"{_gm.oresToMine} {_gm.oreName} left!";
         }
-
-        // Is activate when a block is mined
+        
         private void OnBlockMined(Block block, Vector3 shipPos)
         {
             // ======================= Spawn text object showing mined blocks info =====================================
@@ -111,7 +109,6 @@ namespace Dig_Down.Scripts.Managers
                 _block.color = Color.yellow;
                 Destroy(blockName, 0.5f);
             }
-            // =========================================================================================================
         }
 
         private void OnRefuel(Vector3 fuelStationPos, Transform fuelTransform, int refuelAmount)

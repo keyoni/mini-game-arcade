@@ -54,52 +54,53 @@ namespace Dig_Down.Scripts.Level_Generation
             Vector3 blockOffsetPos = new Vector3(column + 0.5f, row + 0.5f, 0f);
 
             GameObject blockToCreate;
-
-            if (row == levelHeight - 1)
+            
+            if (column == 0 || column == levelWidth - 1)
             {
-                blockToCreate = dirtPrefab;
-            }
-            else if (row > 0)
-            {
-                if (perlinOutput < 0.07f && row < levelHeight / 3)
-                {
-                    blockToCreate = emeraldPrefab;
-                }
-                else if (perlinOutput < 0.10f && row < levelHeight / 2)
-                {
-                    blockToCreate = rubyPrefab;
-                }
-                else if (perlinOutput < 0.12f && row < levelHeight / 2)
-                {
-                    blockToCreate = sapphirePrefab;
-                }
-                else if (perlinOutput < 0.15f && row < levelHeight - 10)
-                {
-                    blockToCreate = ironPrefab;
-                }
-                else if (perlinOutput < 0.20f)
-                {
-                    blockToCreate = mythrilPrefab;
-                }
-                else if (perlinOutput < 0.25f && row < levelHeight - 2)
-                {
-                    blockToCreate = airPrefab;
-                }
-                else if (perlinOutput < 0.35f)
-                {
-                    blockToCreate = stonePrefab;
-                }
-                else
-                {
-                    blockToCreate = dirtPrefab;
-                }
+                blockToCreate = obsidianPrefab;
             }
             else
             {
-                // Spawn obsidian at very bottom of level
-                blockToCreate = obsidianPrefab;
+                if (row == levelHeight - 1)
+                {
+                    blockToCreate = dirtPrefab;
+                }
+                else if (row > 0)
+                {
+                    switch (perlinOutput)
+                    {
+                        case < 0.07f when row < levelHeight / 3:
+                            blockToCreate = emeraldPrefab;
+                            break;
+                        case < 0.10f when row < levelHeight / 2:
+                            blockToCreate = rubyPrefab;
+                            break;
+                        case < 0.12f when row < levelHeight / 2:
+                            blockToCreate = sapphirePrefab;
+                            break;
+                        case < 0.15f when row < levelHeight - 10:
+                            blockToCreate = ironPrefab;
+                            break;
+                        case < 0.20f:
+                            blockToCreate = mythrilPrefab;
+                            break;
+                        case < 0.25f when row < levelHeight - 2:
+                            blockToCreate = airPrefab;
+                            break;
+                        case < 0.35f:
+                            blockToCreate = stonePrefab;
+                            break;
+                        default:
+                            blockToCreate = dirtPrefab;
+                            break;
+                    }
+                }
+                else
+                {
+                    // Spawn obsidian at very bottom of level
+                    blockToCreate = obsidianPrefab;
+                }
             }
-            
             Instantiate(blockToCreate, blockOffsetPos, Quaternion.identity, levelRoot);
         }
     }

@@ -31,6 +31,7 @@ namespace Dig_Down.Scripts
         {
             _rb = GetComponent<Rigidbody2D>();
             _shipMining = GetComponent<ShipMining>();
+            Dig_Down.Scripts.Managers.AudioManager.StopSound("shipIdle");
         }
 
         private void Update()
@@ -51,7 +52,7 @@ namespace Dig_Down.Scripts
 
         private void FixedUpdate()
         {
-            if (Input.GetButton("Jump") || Input.GetKey(KeyCode.UpArrow))
+            if (Input.GetButton("Jump") || Input.GetKey(KeyCode.UpArrow) || Input.GetKey(KeyCode.W))
             {
                 _rb.AddForce(new Vector2(0f, flyForce), ForceMode2D.Impulse);
             }
