@@ -104,7 +104,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.0742188, y: 1.0002613}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -146,7 +146,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 06da83547f69d5743988c4cd41340dea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  timeValue: 10
   value: 750
   blockName: Iron
   health: 100
-  damageMultiplier: 12
+  damageMultiplier: 14

@@ -16,8 +16,8 @@ public class MenuNavagation : MonoBehaviour
         if (!this.gameObject.scene.name.Equals("StartMenu"))
         {
             if (!FindObjectOfType<PauseMenu>())
-            {
-                Instantiate(pauseMenu, canvas.gameObject.transform);
+            { 
+                Instantiate(pauseMenu, canvas.gameObject.transform); 
                 print("Scene:" + this.gameObject.scene.name);
 
             }

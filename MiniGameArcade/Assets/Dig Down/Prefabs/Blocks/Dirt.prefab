@@ -151,7 +151,7 @@ MonoBehaviour:
   value: 25
   blockName: Dirt
   health: 100
-  damageMultiplier: 128
+  damageMultiplier: 22
 --- !u!1 &8300961999065579394
 GameObject:
   m_ObjectHideFlags: 0

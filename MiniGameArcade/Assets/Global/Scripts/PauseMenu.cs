@@ -38,7 +38,7 @@ public class PauseMenu : MonoBehaviour
 
     public void Close()
     {
-       this.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(0, 0,-100000);
+       this.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-10000, -100000,-100000);
        
       
        Time.timeScale = 1;
