@@ -553,12 +553,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7836273159710241728, guid: 5ff5b3547659ba24887c3f729c981507, type: 3}
       propertyPath: leaderboardToSelect.Array.size
-      value: 4
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7836273159710241728, guid: 5ff5b3547659ba24887c3f729c981507, type: 3}
       propertyPath: leaderboardToSelect.Array.data[0]
       value: 
-      objectReference: {fileID: 11400000, guid: 54fdea1fe9cf804428e2a86c7a118d80, type: 2}
+      objectReference: {fileID: 11400000, guid: e08a52e68bf09114bb137264895394ba, type: 2}
     - target: {fileID: 7836273159710241728, guid: 5ff5b3547659ba24887c3f729c981507, type: 3}
       propertyPath: leaderboardToSelect.Array.data[1]
       value: 
@@ -566,11 +566,27 @@ PrefabInstance:
     - target: {fileID: 7836273159710241728, guid: 5ff5b3547659ba24887c3f729c981507, type: 3}
       propertyPath: leaderboardToSelect.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: 67f824549eb1dea46bbaee0478a82b44, type: 2}
+      objectReference: {fileID: 11400000, guid: f0ef7884611737f41b7074e42fd2100c, type: 2}
     - target: {fileID: 7836273159710241728, guid: 5ff5b3547659ba24887c3f729c981507, type: 3}
       propertyPath: leaderboardToSelect.Array.data[3]
       value: 
+      objectReference: {fileID: 11400000, guid: 40daed07c3bfc914baa1694c60a5f512, type: 2}
+    - target: {fileID: 7836273159710241728, guid: 5ff5b3547659ba24887c3f729c981507, type: 3}
+      propertyPath: leaderboardToSelect.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 67f824549eb1dea46bbaee0478a82b44, type: 2}
+    - target: {fileID: 7836273159710241728, guid: 5ff5b3547659ba24887c3f729c981507, type: 3}
+      propertyPath: leaderboardToSelect.Array.data[5]
+      value: 
       objectReference: {fileID: 11400000, guid: 6be4cd7c34224ef4fb628986685d8894, type: 2}
+    - target: {fileID: 7836273159710241728, guid: 5ff5b3547659ba24887c3f729c981507, type: 3}
+      propertyPath: leaderboardToSelect.Array.data[6]
+      value: 
+      objectReference: {fileID: 11400000, guid: 54fdea1fe9cf804428e2a86c7a118d80, type: 2}
+    - target: {fileID: 7836273159710241728, guid: 5ff5b3547659ba24887c3f729c981507, type: 3}
+      propertyPath: leaderboardToSelect.Array.data[7]
+      value: 
+      objectReference: {fileID: 11400000, guid: 40daed07c3bfc914baa1694c60a5f512, type: 2}
     - target: {fileID: 7836273159710241731, guid: 5ff5b3547659ba24887c3f729c981507, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
