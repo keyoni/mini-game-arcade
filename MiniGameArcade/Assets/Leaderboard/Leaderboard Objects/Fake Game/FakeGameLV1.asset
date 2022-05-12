@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: FakeGameLV1
   m_EditorClassIdentifier: 
   lbIndex: 0
-  levelTitle: Fake Game Level One
+  levelTitle: Secret Level
   playerPrefsBase: FakeGame1_1

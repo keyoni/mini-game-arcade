@@ -50,14 +50,25 @@ public class LeaderboardSender: MonoBehaviour
     public void GetFinalScore()
     {
         
-        scoreText.text = currentScore.text;
-        score = Int32.Parse(currentScore.text);
-        if (CheckIfHighScore())
+       if (!this.gameObject.scene.name.Equals("Sandbox1"))
         {
-            HighScoreChanges();
+            scoreText.text = currentScore.text;
+            score = Int32.Parse(currentScore.text);
+            if (CheckIfHighScore())
+            {
+                HighScoreChanges();
 
-        };
+            }
+    
+            
+        }
+       else
+       {
+           scoreText.text = "Good Job! ";
+       }
+
         Active();
+
     }
 
 
