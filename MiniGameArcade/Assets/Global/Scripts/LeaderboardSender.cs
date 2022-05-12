@@ -26,7 +26,7 @@ public class LeaderboardSender: MonoBehaviour
     private int highScoreRank = -1;
     void Start()
     {
-        this.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(-100000, -100000,-100000);
+        this.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(0, 0,-100000);
         //GameOverTest.GameEnds += Active;
         //GameOverTest.GameEnds += GetFinalScore;
         highScoreUI.SetActive(false);
@@ -49,7 +49,8 @@ public class LeaderboardSender: MonoBehaviour
     }
     public void GetFinalScore()
     {
-        if (!this.gameObject.scene.name.Equals("Sandbox1"))
+        
+       if (!this.gameObject.scene.name.Equals("Sandbox1"))
         {
             scoreText.text = currentScore.text;
             score = Int32.Parse(currentScore.text);
@@ -58,15 +59,16 @@ public class LeaderboardSender: MonoBehaviour
                 HighScoreChanges();
 
             }
-
+    
             
         }
-        else
-        {
-            scoreText.text = "Good Job!";
-        }
+       else
+       {
+           scoreText.text = "Good Job! ";
+       }
 
         Active();
+
     }
 
 

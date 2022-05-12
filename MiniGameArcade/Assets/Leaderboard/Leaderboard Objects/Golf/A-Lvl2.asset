@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: A-Lvl2
   m_EditorClassIdentifier: 
   lbIndex: 1
-  levelTitle: Easy #1
+  levelTitle: Level 2
   playerPrefsBase: AlexLevel2
