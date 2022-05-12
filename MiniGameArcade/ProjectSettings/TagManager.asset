@@ -12,6 +12,7 @@ TagManager:
   - Bullet
   - Pos
   - Neg
+  - Coin
   layers:
   - Default
   - TransparentFX
@@ -75,6 +76,7 @@ TagManager:
     locked: 0
   - name: Arrow
     uniqueID: 991620799
+    locked: 0
   - name: Ship
     uniqueID: 866200821
     locked: 0
