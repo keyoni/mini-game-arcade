@@ -494,6 +494,7 @@ MonoBehaviour:
   score: {fileID: 2021139074}
   fuel: {fileID: 1079123272}
   health: {fileID: 868313725}
+  hiddenScore: {fileID: 1307614772}
   oresLeft: {fileID: 645769923}
   fuelBarFill: {fileID: 1926464210}
   healthBarFill: {fileID: 1610839435}
@@ -640,6 +641,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f10659890eeea4a408bb1d007acf5856, type: 3}
+--- !u!114 &1307614772 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3913108553085867739, guid: f10659890eeea4a408bb1d007acf5856, type: 3}
+  m_PrefabInstance: {fileID: 1307614771}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1513938416
 PrefabInstance:
   m_ObjectHideFlags: 0

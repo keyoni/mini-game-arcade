@@ -14,4 +14,5 @@ public class GameSelectionScriptable : ScriptableObject
      public String leaderboardSceneName;
      public String gameLevelOneSceneName;
      public AudioClip backgroundMusic;
+     public bool ava;
 }

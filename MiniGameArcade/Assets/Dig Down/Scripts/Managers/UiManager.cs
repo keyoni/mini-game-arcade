@@ -29,7 +29,11 @@ namespace Dig_Down.Scripts.Managers
         public TextMeshProUGUI score;
         public TextMeshProUGUI fuel;
         public TextMeshProUGUI health;
+
+        public TextMeshProUGUI hiddenScore;
+
         public TextMeshProUGUI oresLeft;
+
         
         // Bars
         public Image fuelBarFill;
@@ -56,6 +60,10 @@ namespace Dig_Down.Scripts.Managers
             health.text = $"Health: 0.00";
             var pos = new Vector3(shipPos.x, shipPos.y + 1.5f, shipPos.z);
             var text = Instantiate(gameOverObj, pos, Quaternion.identity, _ship.transform);
+
+            //hiddenScore.text = score.text;
+            FindObjectOfType<LeaderboardSender>().GetFinalScore();
+
             var textMesh = text.GetComponentInChildren<TextMeshProUGUI>();
             if (_gm.oresToMine <= 0)
             {
@@ -68,6 +76,7 @@ namespace Dig_Down.Scripts.Managers
                 textMesh.color = Color.red;
             }
 
+
             _gm.OnGameOver -= GameOver;
         }
         
@@ -79,6 +88,7 @@ namespace Dig_Down.Scripts.Managers
             fuelBarFill.color = ship.fuel <= 25 ? Color.red : Color.green;
             
             score.text = $"Score: {ship.score}";
+            hiddenScore.text = ship.score.ToString();
             depth.text = ship.depth > 0 ? $"Depth: -{ship.depth} ft." : $"Depth: {ship.depth} ft.";
             
             levelCountdown.text = $"Time Left: {timeLeft:0.00}";
