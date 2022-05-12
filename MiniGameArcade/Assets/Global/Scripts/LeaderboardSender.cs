@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,8 @@ public class LeaderboardSender: MonoBehaviour
     [SerializeField] private TMP_Text scoreText;
 
     [SerializeField] private TMP_InputField nameInput;
+    [SerializeField] private GameObject highScoreUI;
+    [SerializeField] private GameObject bot;
 
     public TMP_Text currentScore;
 
@@ -18,7 +21,7 @@ public class LeaderboardSender: MonoBehaviour
 
     [SerializeField] private GameObject yourScore;
 
-    [SerializeField] private Button NameScoreSubmit;
+    [SerializeField] private Button nameScoreSubmit;
     // Start is called before the first frame update
     private int highScoreRank = -1;
     void Start()
@@ -26,7 +29,7 @@ public class LeaderboardSender: MonoBehaviour
         this.gameObject.GetComponent<RectTransform>().localPosition = new Vector3(0, 0,-100000);
         //GameOverTest.GameEnds += Active;
         //GameOverTest.GameEnds += GetFinalScore;
-        
+        highScoreUI.SetActive(false);
         CreatingLeaderboard();
 
     }
@@ -51,39 +54,71 @@ public class LeaderboardSender: MonoBehaviour
         score = Int32.Parse(currentScore.text);
         if (CheckIfHighScore())
         {
-            print(highScoreRank);
-         
+            HighScoreChanges();
+
         };
         Active();
     }
 
-     bool CheckIfHighScore()
-    {
-        NameScoreSubmit.interactable = false;
-      //ToDo: If High score, do high score animation
-        string playerPrefsBase = this.gameObject.scene.name;
-        if (score > PlayerPrefs.GetInt(playerPrefsBase + "[1].score"))
-        {
-            highScoreRank = 1;
-            return true;
-        }
-        else if (score > PlayerPrefs.GetInt(playerPrefsBase + "[2].score"))
-        {
-            highScoreRank = 2;
-            return true;
-      
-        } else if (score > PlayerPrefs.GetInt(playerPrefsBase + "[3].score"))
-        {
-            highScoreRank = 3;
-            return true;
-        }
 
+    private void HighScoreChanges()
+    {
+        highScoreUI.SetActive(true);
+        bot.transform.localPosition = new Vector3(220, -100, 0);
+    }
+
+    bool CheckIfHighScore()
+    {
+
+        //ToDo: If High score, do high score animation
+        string playerPrefsBase = this.gameObject.scene.name;
+        if (playerPrefsBase.Contains("Alex") || playerPrefsBase.Contains("Kevin"))
+        {
+            if (score < PlayerPrefs.GetInt(playerPrefsBase + "[1].score"))
+            {
+                highScoreRank = 1;
+                return true;
+            }
+            else if (score < PlayerPrefs.GetInt(playerPrefsBase + "[2].score"))
+            {
+                highScoreRank = 2;
+                return true;
+
+            }
+            else if (score < PlayerPrefs.GetInt(playerPrefsBase + "[3].score"))
+            {
+                highScoreRank = 3;
+                return true;
+            }
+
+        }
+        else
+        {
+            if (score > PlayerPrefs.GetInt(playerPrefsBase + "[1].score"))
+            {
+                highScoreRank = 1;
+                return true;
+            }
+            else if (score > PlayerPrefs.GetInt(playerPrefsBase + "[2].score"))
+            {
+                highScoreRank = 2;
+                return true;
+
+            }
+            else if (score > PlayerPrefs.GetInt(playerPrefsBase + "[3].score"))
+            {
+                highScoreRank = 3;
+                return true;
+            }
+            
+        }
+        
         return false;
     }
 
-     public void SetHighScore()
+    public void SetHighScore()
     {
-        
+        nameScoreSubmit.interactable = false;
         string playerPrefsBase = this.gameObject.scene.name;
         switch (highScoreRank)
         {
@@ -123,13 +158,26 @@ public class LeaderboardSender: MonoBehaviour
         if (!PlayerPrefs.HasKey(playerPrefsBase))
         {
             PlayerPrefs.SetString(playerPrefsBase,"true");
-            for (int i = 1; i <= 3; i++)
+            if (playerPrefsBase.Contains("Alex") || playerPrefsBase.Contains("Kevin"))
             {
-                //PlayerPrefs.SetString(PlayerPrefsBaseKey + "[" + i + "].name", entry.name);
-                PlayerPrefs.SetString(playerPrefsBase + "[" + i + "].name","void");
-                PlayerPrefs.SetInt(playerPrefsBase + "[" + i + "].score",0);
+                for (int i = 1; i <= 3; i++)
+                {
+                    //PlayerPrefs.SetString(PlayerPrefsBaseKey + "[" + i + "].name", entry.name);
+                    PlayerPrefs.SetString(playerPrefsBase + "[" + i + "].name","void");
+                    PlayerPrefs.SetInt(playerPrefsBase + "[" + i + "].score",999);
+                }
+            }
+            else
+            {
+                for (int i = 1; i <= 3; i++)
+                {
+                    //PlayerPrefs.SetString(PlayerPrefsBaseKey + "[" + i + "].name", entry.name);
+                    PlayerPrefs.SetString(playerPrefsBase + "[" + i + "].name", "void");
+                    PlayerPrefs.SetInt(playerPrefsBase + "[" + i + "].score", 0);
+                }
             }
         }
-
     }
+
 }
+
