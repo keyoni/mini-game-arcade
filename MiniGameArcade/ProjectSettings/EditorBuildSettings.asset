@@ -54,12 +54,51 @@ EditorBuildSettings:
     path: Assets/RandomToru/Scenes/Game 3.unity
     guid: a60e7941da7048e44bfe4a1bb04123b7
   - enabled: 1
-    path: Assets/Global/Other stuff/LeaderboardMenu.unity
+    path: Assets/GameMenu1/Scenes/LeaderboardMenu.unity
     guid: a50598040e0b3524da265ef86129dd50
   - enabled: 1
-    path: Assets/Global/Other stuff/FakeGameLeaderboard.unity
+    path: Assets/Leaderboard/Scenes/FakeGameLeaderboard.unity
     guid: ca12966e58f6d6848a528f6cacd5d4d8
   - enabled: 1
-    path: Assets/Global/Other stuff/FakeGame1_1.unity
+    path: Assets/Leaderboard/Leaderboard Objects/Fake Game/FakeGame1_1.unity
     guid: 2571f951f03695f4fb0e82abab816d41
+  - enabled: 1
+    path: Assets/GameMenu1/Scenes/RandomizeTournamentMenu.unity
+    guid: a85a4c8f98d624c449f9934959d25de6
+  - enabled: 1
+    path: Assets/Dig Down/Scenes/Demo Scene.unity
+    guid: 5b5b10394e0657243b1f43d68a2634ce
+  - enabled: 1
+    path: Assets/Dig Down/Scenes/Level2.unity
+    guid: caa6e08a7b5a5eb4ebd3cd75ea4dd25d
+  - enabled: 1
+    path: Assets/Dig Down/Scenes/Level3.unity
+    guid: 3af7fecead8e88743bece17eda5c9a33
+  - enabled: 1
+    path: Assets/Golf Game/Scenes/AlexBabyModeLevel.unity
+    guid: 8c7f77e5c3b916e4e9661b7f1e6cd8fc
+  - enabled: 1
+    path: Assets/Golf Game/Scenes/AlexLevel1.unity
+    guid: 90fe31bd3be609344935de0ce74225b1
+  - enabled: 1
+    path: Assets/Golf Game/Scenes/AlexLevel2.unity
+    guid: 1fa9013e3f1f64e4c989abed2edfe2d2
+  - enabled: 1
+    path: Assets/Hungry Frog/Scenes/Level_1.unity
+    guid: 70e741bdd6f1a8048b9b6d1a72f3393e
+  - enabled: 1
+    path: Assets/Golf Game/Scenes/AlexLevel3.unity
+    guid: 876ab653cf63aff49a82918cdca020ce
+  - enabled: 1
+    path: Assets/Golf Game/Scenes/AlexLevel4.unity
+    guid: 54d9e9c2cacdc8c4abe8f63be29c662b
+  - enabled: 1
+    path: Assets/Golf Game/Scenes/Golf demo_LBTest.unity
+    guid: f0ee8e93265d42c459839900bb736f67
+  - enabled: 1
+    path: Assets/Leaderboard/Scenes/DigLeaderboard.unity
+    guid: 7dbbfdf802d4feb43b0096a52963ff17
+  - enabled: 1
+    path: Assets/Leaderboard/Scenes/GolfLeaderboard.unity
+    guid: e384e737e90c7854181b6cc6bb7839f0
   m_configObjects: {}
