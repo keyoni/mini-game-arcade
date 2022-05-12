@@ -11,13 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/GameMenu1/Scenes/GameSelection.unity
     guid: b59c12efae8fd794c8dc91eb331838ed
-  - enabled: 1
+  - enabled: 0
     path: Assets/StartMenu/Scenes/ChangeProfile.unity
     guid: e8072155a0a965d448916928f03b5a9d
   - enabled: 1
     path: Assets/StartMenu/Scenes/Credits.unity
     guid: 0c8b0409b7566d34a9c28120fe268e61
-  - enabled: 1
+  - enabled: 0
     path: Assets/StartMenu/Scenes/Options.unity
     guid: 2631d3498525c014e9509929c493cc76
   - enabled: 1
@@ -29,7 +29,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Dig Down/Scenes/DigMainMenu.unity
     guid: 253ff5e83624727449a5367c88c424f4
-  - enabled: 1
+  - enabled: 0
     path: Assets/Golf Game/Scenes/Golf demo.unity
     guid: 0a6ad278c4ca5834cbbe59579a362085
   - enabled: 1
@@ -92,7 +92,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Golf Game/Scenes/AlexLevel4.unity
     guid: 54d9e9c2cacdc8c4abe8f63be29c662b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Golf Game/Scenes/Golf demo_LBTest.unity
     guid: f0ee8e93265d42c459839900bb736f67
   - enabled: 1
