@@ -66,15 +66,8 @@ namespace Dig_Down.Scripts
 
         private void StartMiningBlock(RaycastHit2D hit, bool mineDown)
         {
-            if (hit)
+            if (hit && !hit.collider.CompareTag("obstacle"))
             {
-                if (hit.collider.CompareTag("obstacle"))
-                {
-                    XRayHit = new RaycastHit2D();
-                    YRayHit = new RaycastHit2D();
-                    return;
-                }
-
                 if (!_shipMining)
                 {
                     Dig_Down.Scripts.Managers.AudioManager.PlaySound("shipDrill");
@@ -128,7 +121,7 @@ namespace Dig_Down.Scripts
             _shipMining = false;
             Dig_Down.Scripts.Managers.AudioManager.StopSound("shipDrill");
             OnBlockMined?.Invoke(_block, _shipPos);
-            Destroy(_block.gameObject); // Added a time delay to makeup for coroutine wait
+            Destroy(_block.gameObject);
         }
     }
 }

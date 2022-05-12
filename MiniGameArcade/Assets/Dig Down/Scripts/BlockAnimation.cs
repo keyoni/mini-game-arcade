@@ -19,6 +19,11 @@ namespace Dig_Down.Scripts
         private static readonly int IsGold = Animator.StringToHash("isGold");
         private static readonly int IsDiamond = Animator.StringToHash("isDiamond");
         private static readonly int IsObsidian = Animator.StringToHash("isObsidian");
+        private static readonly int IsCobalt = Animator.StringToHash("isCobalt");
+        private static readonly int IsEmerald = Animator.StringToHash("isEmerald");
+        private static readonly int IsMythril = Animator.StringToHash("isMythril");
+        private static readonly int IsRuby = Animator.StringToHash("isRuby");
+        private static readonly int IsSapphire = Animator.StringToHash("isSapphire");
 
         private void Awake()
         {
@@ -52,6 +57,22 @@ namespace Dig_Down.Scripts
                     break;
                 case "Obsidian":
                     _animator.SetBool(IsObsidian, true);
+                    break;
+                case "Cobalt":
+                    _animator.SetBool(IsCobalt, true);
+                    break;
+                case "Emerald":
+                    _animator.SetBool(IsEmerald, true);
+                    break;
+                case "Mythril":
+                    _animator.SetBool(IsMythril, true);
+                    break;
+                
+                case "Ruby":
+                    _animator.SetBool(IsRuby, true);
+                    break;
+                case "Sapphire":
+                    _animator.SetBool(IsSapphire, true);
                     break;
             }
         }
