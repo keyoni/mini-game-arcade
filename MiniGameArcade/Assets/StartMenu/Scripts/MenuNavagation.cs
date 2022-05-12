@@ -32,8 +32,8 @@ public class MenuNavagation : MonoBehaviour
 
          public void SceneChange(String sceneName)
          {
-             StartCoroutine(Wait(sceneName));
-             // SceneManager.LoadScene(sceneName);
+             //StartCoroutine(Wait(sceneName));
+             SceneManager.LoadScene(sceneName);
          }
 
          IEnumerator Wait(String sceneName)
@@ -46,7 +46,7 @@ public class MenuNavagation : MonoBehaviour
 
          public void RestartScene()
          {
-             StartCoroutine(Wait(SceneManager.GetActiveScene().name));
+             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
          }
 
          public void ExitGame()
