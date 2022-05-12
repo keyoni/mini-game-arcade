@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ButtonLogic : MonoBehaviour
 {
@@ -54,5 +55,9 @@ public class ButtonLogic : MonoBehaviour
     {
         rect.localPosition += (new Vector3(0,1,1)); 
     }
-    
+
+    public void BtnDisable(Button btn)
+    {
+        btn.interactable = false;
+    }
 }

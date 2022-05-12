@@ -1,16 +1,21 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Scoring : MonoBehaviour
 {
     public GameObject StrokesText;
     public GameObject ResultText;
+
     //private int points = 0;
     //private static bool gameEnded = false;
 
     //public GameObject gameOverUI;
+
+    public GameObject ScoreNum;
+
 
     private int strokes;
 
@@ -23,11 +28,17 @@ public class Scoring : MonoBehaviour
     public void completeRound()
     {
         ResultText.SetActive(true);
+
         //ResultText.GetComponent<TMPro.TextMeshProUGUI>().text = "You finished in " + Score() + " strokes!";
         Score();
         //gameEnded = true;
        // gameOverUI.SetActive(true);
         Debug.Log("Game over");
+
+
+        ResultText.GetComponent<TMPro.TextMeshProUGUI>().text = "You finished in " + strokes + " strokes!";
+        ScoreNum.GetComponent<TMPro.TextMeshProUGUI>().text = strokes.ToString();
+        FindObjectOfType<LeaderboardSender>().GetFinalScore();
 
     }
 
