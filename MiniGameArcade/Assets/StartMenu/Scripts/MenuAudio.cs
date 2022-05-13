@@ -44,7 +44,7 @@ namespace StartMenu.Scripts
         {
             
             Scene scene = SceneManager.GetActiveScene();
-            Debug.Log("this is: + " + scene.name);
+            //Debug.Log("this is: + " + scene.name);
             if (scene.name == "GameSelection" || scene.name.Contains("Level") || scene.name == "GolfMainMenu" || scene.name == "DigMainMenu") 
             {
                 StopMusic();

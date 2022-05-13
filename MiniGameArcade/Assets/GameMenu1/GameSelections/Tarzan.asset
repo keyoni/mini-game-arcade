@@ -13,9 +13,10 @@ MonoBehaviour:
   m_Name: Tarzan
   m_EditorClassIdentifier: 
   gameIndex: 2
-  gameTitle: Tarzan
-  gameInfo: Weeeee!
+  gameTitle: 'Hungry Frog (demo) '
+  gameInfo: Early Access SandBox Demo!
   gameImage: {fileID: 21300000, guid: edeb2313e86aeac45b8460998756abb6, type: 3}
   leaderboardSceneName: 
-  gameLevelOneSceneName: 
+  gameLevelOneSceneName: Sandbox1
   backgroundMusic: {fileID: 8300000, guid: b6dac1b55c437b54586e99f0c25106b3, type: 3}
+  ava: 1

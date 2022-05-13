@@ -150,4 +150,4 @@ MonoBehaviour:
   value: 60
   blockName: Emerald
   health: 100
-  damageMultiplier: 12
+  damageMultiplier: 18

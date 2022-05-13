@@ -150,4 +150,4 @@ MonoBehaviour:
   value: 100
   blockName: Mythril
   health: 100
-  damageMultiplier: 12
+  damageMultiplier: 14

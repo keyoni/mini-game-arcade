@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a439ae7cba20cbb46a6e819bc68a9193, type: 3}
   m_Name: DigLvl3
   m_EditorClassIdentifier: 
-  lbIndex: 0
-  levelTitle: Level One
-  playerPrefsBase: Level1-Main
+  lbIndex: 2
+  levelTitle: Level Three
+  playerPrefsBase: Level3

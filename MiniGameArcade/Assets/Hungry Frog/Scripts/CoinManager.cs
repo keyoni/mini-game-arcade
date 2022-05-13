@@ -34,5 +34,7 @@ public class CoinManager : MonoBehaviour
         timerIsActive = false;
         winnerMessage.SetActive(true);
         FindObjectOfType<FrogAudio>().playSound("win");
+        FindObjectOfType<LeaderboardSender>().GetFinalScore();
+
     }
 }

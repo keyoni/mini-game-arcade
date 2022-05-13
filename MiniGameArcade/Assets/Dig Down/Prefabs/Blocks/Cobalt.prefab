@@ -150,4 +150,4 @@ MonoBehaviour:
   value: 80
   blockName: Cobalt
   health: 100
-  damageMultiplier: 12
+  damageMultiplier: 18

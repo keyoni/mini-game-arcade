@@ -150,4 +150,4 @@ MonoBehaviour:
   value: 120
   blockName: Sapphire
   health: 100
-  damageMultiplier: 12
+  damageMultiplier: 14

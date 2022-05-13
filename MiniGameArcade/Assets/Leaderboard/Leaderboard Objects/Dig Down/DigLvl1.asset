@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: DigLvl1
   m_EditorClassIdentifier: 
   lbIndex: 0
-  levelTitle: Level Three
-  playerPrefsBase: Level3
+  levelTitle: Level One
+  playerPrefsBase: Level1-Main

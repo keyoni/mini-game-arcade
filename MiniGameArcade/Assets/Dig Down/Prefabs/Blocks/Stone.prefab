@@ -150,4 +150,4 @@ MonoBehaviour:
   value: 15
   blockName: Stone
   health: 100
-  damageMultiplier: 5
+  damageMultiplier: 20
